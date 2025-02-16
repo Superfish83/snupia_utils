@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-black text-white;
+}
+
 .systemBtn {
   @apply text-lg font-bold mx-auto my-4
-   bg-blue-600 hover:bg-blue-700 border-blue-700 
-   transition-all text-white p-4 rounded-lg border-2;
+   bg-blue-800 hover:bg-blue-600
+   transition-all p-4 rounded-lg;
 }
