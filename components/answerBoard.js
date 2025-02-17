@@ -19,18 +19,18 @@ export default function AnswerBoard({ answer, setAnswer }) {
       ? {
           width: `${bkW}px`,
           height: `${bkH}px`,
-          background: selected ? "green" : "black",
           left: `${x}px`,
         }
       : {
           width: `${wkW}px`,
           height: `${wkH}px`,
-          background: selected ? "green" : "white",
           left: `${x}px`,
         };
     return (
       <button
-        className="absolute border-slate-500 border"
+        className={`absolute border-slate-500 border ${
+          isblack ? "bg-black hover:bg-gray-800" : "bg-white hover:bg-gray-200"
+        }`}
         style={keyStyle}
         onClick={() => {
           setAnswer(id);

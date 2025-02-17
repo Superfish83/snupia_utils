@@ -44,6 +44,7 @@ export default function Game() {
   // 2: 타임 오버
   const [correctCnt, setCorrectCnt] = useState(0);
 
+  const [quizList, setQuizList] = useState([]);
   const [quizIdx, setQuizIdx] = useState(0);
   const [answer, setAnswer] = useState(-1);
   const [lastAnswer, setLastAnswer] = useState(-1);
@@ -51,16 +52,26 @@ export default function Game() {
   const images = useImages("quizpic");
 
   function initGame() {
-    setQuizIdx(0); // initial quiz index
-    setAnswer(-1); // set answer -1
     setLastAnswer(-1);
     setCorrectCnt(0);
     setGameStatus(0);
+    setQuizList(images.images);
+    setQuizIdx(Math.floor(Math.random() * images.images.length));
   }
 
   useEffect(() => {
-    if (images.loading == false) initGame();
+    if (images.loading == false && quizList.length == 0) initGame();
   }, [images]);
+
+  function updateQuizIdx() {
+    const newIdx = Math.floor(Math.random() * quizList.length);
+
+    if (newIdx == quizIdx) {
+      setQuizIdx((quizIdx + 1) % quizList.length);
+    } else {
+      setQuizIdx(newIdx);
+    }
+  }
 
   useEffect(() => {
     if (answer == -1) return;
@@ -72,7 +83,7 @@ export default function Game() {
       setCorrectCnt(correctCnt + 1);
 
       // 다음 문제 출제
-      setQuizIdx((quizIdx + 1) % quizList.length);
+      updateQuizIdx();
     } else {
       //alert("오답!");
       setGameStatus(1);
@@ -93,8 +104,8 @@ export default function Game() {
     }
   }
   function getKeyFromQuizIdx(idx) {
-    const t = quizList[idx];
-    return parseInt(t.slice(0, [t.indexOf("_")]));
+    const t = quizList[idx].slice(1);
+    return parseInt(t.slice(t.indexOf("/") + 1, [t.indexOf("_")]));
   }
 
   const GameRunning = () => (
@@ -103,14 +114,11 @@ export default function Game() {
         음표에 맞는 음을 누르세요!
       </section>
 
-      <div>
-        11{quizList} {loading}
-      </div>
       <section className="mx-auto my-4">
-        {quizList ? (
+        {quizList.length > 0 ? (
           <Score imgsrc={quizList[quizIdx]} />
         ) : (
-          <div className="w-40 h-56" />
+          <div className="w-40 h-44 bg-white" />
         )}
       </section>
 
@@ -140,7 +148,9 @@ export default function Game() {
       </section>
       <section className="mx-auto my-10 text-center">
         <div className="font-bold text-2xl">게임 결과</div>
-        <div className="font-bold text-xl">맞힌 개수: {correctCnt}개</div>
+        <div className="font-bold text-3xl text-green-200">
+          맞힌 개수: {correctCnt}개
+        </div>
       </section>
       <section className="mx-auto my-10">
         <Link className="systemBtn" href={"/"}>
