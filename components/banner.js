@@ -9,11 +9,11 @@ export default function SnupiaBanner() {
           alt="snupiaLogo"
           width={180}
           height={154}
-          className="w-32 h-32 mx-8"
+          className="w-40 h-40 mx-8"
         />
         <div className="flex flex-col items-center text-white font-bold">
-          <div className="text-3xl">동아리 소개제</div>
-          <div className="text-xl">오선지 초견 게임</div>
+          <div className="text-2xl">서울대학교 중앙 피아노 동아리 SNUPia</div>
+          <div className="text-5xl my-2">오선지 초견 게임</div>
         </div>
       </div>
     </div>

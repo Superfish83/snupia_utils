@@ -3,7 +3,7 @@
 import AnswerBoard from "@/components/answerBoard";
 import Score from "@/components/score";
 import Timer from "@/components/timer";
-import Image from "next/image";
+import useImages from "@/hooks/useImages";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -37,8 +37,6 @@ const notename = [
 ];
 const octavename = ["2", "3", "4", "5", "6"];
 
-const quizList = ["26_1", "26_2"];
-
 export default function Game() {
   const [gameStatus, setGameStatus] = useState(0);
   // 0: 게임 진행 중
@@ -50,17 +48,19 @@ export default function Game() {
   const [answer, setAnswer] = useState(-1);
   const [lastAnswer, setLastAnswer] = useState(-1);
 
+  const images = useImages("quizpic");
+
   function initGame() {
     setQuizIdx(0); // initial quiz index
-    setAnswer(-1);
+    setAnswer(-1); // set answer -1
     setLastAnswer(-1);
     setCorrectCnt(0);
     setGameStatus(0);
   }
 
   useEffect(() => {
-    initGame();
-  }, []);
+    if (images.loading == false) initGame();
+  }, [images]);
 
   useEffect(() => {
     if (answer == -1) return;
@@ -103,13 +103,20 @@ export default function Game() {
         음표에 맞는 음을 누르세요!
       </section>
 
+      <div>
+        11{quizList} {loading}
+      </div>
       <section className="mx-auto my-4">
-        <Score imgsrc={quizList[quizIdx]} />
+        {quizList ? (
+          <Score imgsrc={quizList[quizIdx]} />
+        ) : (
+          <div className="w-40 h-56" />
+        )}
       </section>
 
       <section className="mx-auto my-1">
         <AnswerBoard answer={answer} setAnswer={setAnswer} />
-        <div className="text-gray-800">
+        <div className="text-gray-400">
           [DEBUG] 입력: {getPitch(lastAnswer, true)}
         </div>
       </section>

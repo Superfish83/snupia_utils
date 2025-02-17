@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Timer({ seconds, barSize, setGameStatus }) {
-  const [msLeft, setMsLeft] = useState(100000);
+  const [msLeft, setMsLeft] = useState(0.0);
   const [startTime, setStartTime] = useState(null);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export default function Timer({ seconds, barSize, setGameStatus }) {
   }, []);
 
   useEffect(() => {
-    if (msLeft < 0.0) {
+    if (msLeft > -10000 && msLeft < 0) {
       setGameStatus(2);
       return;
     }
