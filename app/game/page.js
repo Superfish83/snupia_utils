@@ -68,7 +68,11 @@ export default function Game() {
   }, [images]);
 
   const difficulty = useMemo(
-    () => Math.min(Math.floor(correctCnt / 7), 2),
+    () => {
+      if(correctCnt < 6) return 0;
+      else if (correctCnt < 15) return 1;
+      else return 2;
+    }
     [correctCnt]
   );
 
