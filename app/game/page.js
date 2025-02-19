@@ -3,9 +3,10 @@
 import AnswerBoard from "@/components/answerBoard";
 import Score from "@/components/score";
 import Timer from "@/components/timer";
+import TutorialBoard from "@/components/tutorialBoard";
 import useImages from "@/hooks/useImages";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const pitchname = [
   "A",
@@ -43,6 +44,7 @@ export default function Game() {
   // 1: 오답
   // 2: 타임 오버
   const [correctCnt, setCorrectCnt] = useState(0);
+  const [keyHitTime, setKeyHitTime] = useState(null);
 
   const [quizList, setQuizList] = useState([]);
   const [quizIdx, setQuizIdx] = useState(0);
@@ -51,23 +53,30 @@ export default function Game() {
 
   const images = useImages("quizpic");
 
+  const DEBUGMODE = false;
+
   function initGame() {
     setLastAnswer(-1);
     setCorrectCnt(0);
     setGameStatus(0);
-    setQuizList(images.images);
-    setQuizIdx(Math.floor(Math.random() * images.images.length));
+    setQuizList(images?.images);
+    setQuizIdx(Math.floor(Math.random() * images?.images[0]?.length));
   }
 
   useEffect(() => {
-    if (images.loading == false && quizList.length == 0) initGame();
+    if (images.loading == false && quizList?.length == 0) initGame();
   }, [images]);
 
+  const difficulty = useMemo(
+    () => Math.min(Math.floor(correctCnt / 7), 2),
+    [correctCnt]
+  );
+
   function updateQuizIdx() {
-    const newIdx = Math.floor(Math.random() * quizList.length);
+    const newIdx = Math.floor(Math.random() * quizList[difficulty].length);
 
     if (newIdx == quizIdx) {
-      setQuizIdx((quizIdx + 1) % quizList.length);
+      setQuizIdx((quizIdx + 1) % quizList[difficulty].length);
     } else {
       setQuizIdx(newIdx);
     }
@@ -83,10 +92,11 @@ export default function Game() {
       setCorrectCnt(correctCnt + 1);
 
       // 다음 문제 출제
-      updateQuizIdx();
+      setKeyHitTime(Date.now());
+      setTimeout(updateQuizIdx, 70);
     } else {
       //alert("오답!");
-      setGameStatus(1);
+      if (!DEBUGMODE) setGameStatus(1);
     }
     setLastAnswer(answer);
 
@@ -104,8 +114,9 @@ export default function Game() {
     }
   }
   function getKeyFromQuizIdx(idx) {
-    const t = quizList[idx].slice(1);
-    return parseInt(t.slice(t.indexOf("/") + 1, [t.indexOf("_")]));
+    console.log(quizList[difficulty]);
+    const t = quizList[difficulty][idx].slice(1);
+    return parseInt(t.slice(t.indexOf("/") + 3, [t.indexOf("_")]));
   }
 
   const GameRunning = () => (
@@ -115,45 +126,75 @@ export default function Game() {
       </section>
 
       <section className="mx-auto my-4">
-        {quizList.length > 0 ? (
-          <Score imgsrc={quizList[quizIdx]} />
+        {quizList?.length > 0 ? (
+          <div className="flex items-center">
+            <div className="w-32" />
+            <Score
+              imgsrc={quizList[difficulty][quizIdx]}
+              keyHitTime={keyHitTime}
+            />
+            <div className="w-32 px-4 text-slate-300 text-center">
+              난이도: {difficulty == 0 && "★"}
+              {difficulty == 1 && "★★"}
+              {difficulty == 2 && "★★★"}
+            </div>
+          </div>
         ) : (
-          <div className="w-40 h-44 bg-white" />
+          <div className="w-40 h-40 bg-white" />
         )}
       </section>
 
       <section className="mx-auto my-1">
-        <AnswerBoard answer={answer} setAnswer={setAnswer} />
-        <div className="text-gray-400">
-          [DEBUG] 입력: {getPitch(lastAnswer, true)}
-        </div>
+        <AnswerBoard
+          setAnswer={setAnswer}
+          lastAnswer={lastAnswer}
+          keyHitTime={keyHitTime}
+        />
+        {DEBUGMODE && (
+          <div className="text-gray-400">
+            [DEBUG] 입력: {getPitch(lastAnswer, true)}
+          </div>
+        )}
       </section>
 
       <section className="mx-auto my-4">
-        <Timer seconds={30} barSize={1000} setGameStatus={setGameStatus} />
+        <Timer
+          seconds={DEBUGMODE ? 3000 : 30}
+          barSize={1000}
+          setGameStatus={setGameStatus}
+        />
       </section>
     </div>
   );
 
   const GameOver = () => (
     <div className="w-full h-full flex flex-col">
-      <section className="mx-auto my-20 font-bold text-xl text-center">
-        <div className="text-2xl text-red-300 font-bold">게임 오버!</div>
-        <div className="text-red-300">
-          {gameStatus == 1 &&
-            `오답을 눌렀습니다. (입력: ${getPitch(lastAnswer)}
-            , 정답: ${getPitch(getKeyFromQuizIdx(quizIdx))})`}
-          {gameStatus == 2 && "제한 시간 종료"}
+      <section className="mx-auto mt-12 font-bold text-xl text-center">
+        <div className="text-3xl text-red-300 font-bold">
+          게임 오버!
+          {gameStatus == 1 && ` 오답을 눌렀습니다.`}
+          {gameStatus == 2 && ` 제한 시간 종료`}
         </div>
       </section>
-      <section className="mx-auto my-10 text-center">
-        <div className="font-bold text-2xl">게임 결과</div>
+      <section className="mx-auto my-4">
+        <Score imgsrc={quizList[difficulty][quizIdx]} />
+      </section>
+      <section className="mx-auto my-1">
+        {gameStatus == 1 && (
+          <TutorialBoard
+            right={getKeyFromQuizIdx(quizIdx)}
+            wrong={lastAnswer}
+          />
+        )}
+        {gameStatus == 2 && (
+          <TutorialBoard right={getKeyFromQuizIdx(quizIdx)} />
+        )}
+      </section>
+      <section className="mx-auto mt-4 text-center flex items-center">
         <div className="font-bold text-3xl text-green-200">
           맞힌 개수: {correctCnt}개
         </div>
-      </section>
-      <section className="mx-auto my-10">
-        <Link className="systemBtn" href={"/"}>
+        <Link className="ml-10 systemBtn" href={"/"}>
           메인 화면으로
         </Link>
       </section>
@@ -162,7 +203,5 @@ export default function Game() {
 
   if (gameStatus == 0) {
     return GameRunning();
-  } else {
-    return GameOver();
-  }
+  } else return GameOver();
 }

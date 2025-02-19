@@ -8,7 +8,7 @@ export default function Home() {
       <SnupiaBigBanner />
 
       <section className="mx-auto">
-        <Link href="game/" className="systemBtn">
+        <Link href="/tutorial" className="systemBtn">
           게임 시작
         </Link>
       </section>

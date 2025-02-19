@@ -1,6 +1,6 @@
-import AnswerEffect from "./answerEffect";
+import Link from "next/link";
 
-export default function AnswerBoard({ setAnswer, lastAnswer, keyHitTime }) {
+export default function TutorialBoard({ gamestart, right, wrong }) {
   const boardW = 1200;
   const boardH = 220;
   const boardStyle = {
@@ -28,25 +28,48 @@ export default function AnswerBoard({ setAnswer, lastAnswer, keyHitTime }) {
           height: `${wkH}px`,
           left: `${x}px`,
         };
-    return (
-      <>
-        <button
+
+    if (id == gamestart)
+      return (
+        <Link
+          className={`absolute border-slate-500 border bg-green-200 hover:bg-green-300`}
+          style={keyStyle}
+          href={"/game"}
+        />
+      );
+    else if (id == right)
+      return (
+        <div
+          className={`absolute border-slate-500 border ${
+            isblack
+              ? "bg-green-800 hover:bg-green-700"
+              : "bg-green-200 hover:bg-green-300"
+          }`}
+          style={keyStyle}
+        />
+      );
+    else if (id == wrong)
+      return (
+        <div
+          className={`absolute border-slate-500 border ${
+            isblack
+              ? "bg-red-800 hover:bg-red-700"
+              : "bg-red-300 hover:bg-red-400"
+          }`}
+          style={keyStyle}
+        />
+      );
+    else
+      return (
+        <div
           className={`absolute border-slate-500 border ${
             isblack
               ? "bg-black hover:bg-gray-800"
               : "bg-white hover:bg-gray-200"
           }`}
           style={keyStyle}
-          onClick={() => {
-            setAnswer(id);
-          }}
-        >
-          {id == lastAnswer && (
-            <AnswerEffect keyHitTime={keyHitTime} isblack={isblack} />
-          )}
-        </button>
-      </>
-    );
+        />
+      );
   }
 
   function OctaveBoard({ octave }) {

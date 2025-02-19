@@ -1,0 +1,25 @@
+import { useState, useEffect } from "react";
+
+export default function AnswerEffect({ keyHitTime, isblack }) {
+  // timer used for correct answer effect
+  const [msElapsed, setMsElapsed] = useState(-1);
+  const [greenOpacity, setGreenOpacity] = useState(0.0);
+
+  useEffect(() => {
+    setGreenOpacity(
+      msElapsed > 0 ? Math.min(1, Math.max(0, 1 - (msElapsed - 200) / 300)) : 0
+    );
+    setTimeout(() => {
+      setMsElapsed(Date.now() - keyHitTime);
+    }, 50);
+  }, [msElapsed]);
+
+  return (
+    greenOpacity > 0 && (
+      <div
+        className={`w-full h-full ${isblack ? "bg-green-800" : "bg-green-400"}`}
+        style={{ opacity: greenOpacity }}
+      />
+    )
+  );
+}
