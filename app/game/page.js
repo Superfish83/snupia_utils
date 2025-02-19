@@ -67,14 +67,11 @@ export default function Game() {
     if (images.loading == false && quizList?.length == 0) initGame();
   }, [images]);
 
-  const difficulty = useMemo(
-    () => {
-      if(correctCnt < 6) return 0;
-      else if (correctCnt < 15) return 1;
-      else return 2;
-    }
-    [correctCnt]
-  );
+  const difficulty = useMemo(() => {
+    if (correctCnt < 6) return 0;
+    else if (correctCnt < 15) return 1;
+    else return 2;
+  }, [correctCnt]);
 
   function updateQuizIdx() {
     const newIdx = Math.floor(Math.random() * quizList[difficulty].length);
