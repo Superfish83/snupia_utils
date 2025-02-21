@@ -141,7 +141,9 @@ export default function Game() {
             </div>
           </div>
         ) : (
-          <div className="w-40 h-40 bg-white" />
+          <div className="w-40 h-40 bg-white flex items-center">
+            <div className="mx-auto text-black">Loading...</div>
+          </div>
         )}
       </section>
 
@@ -159,11 +161,13 @@ export default function Game() {
       </section>
 
       <section className="mx-auto my-4">
-        <Timer
-          seconds={DEBUGMODE ? 3000 : 30}
-          barSize={1000}
-          setGameStatus={setGameStatus}
-        />
+        {quizList.length > 0 && (
+          <Timer
+            seconds={DEBUGMODE ? 3000 : 30}
+            barSize={1000}
+            setGameStatus={setGameStatus}
+          />
+        )}
       </section>
     </div>
   );

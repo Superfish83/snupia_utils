@@ -21,6 +21,7 @@ export default function Score({ imgsrc, keyHitTime }) {
         alt="score"
         height={100}
         width={100}
+        priority={true}
         className="w-40 h-40 top-0 left-0"
       />
       <div
