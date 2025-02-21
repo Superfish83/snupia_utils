@@ -12,6 +12,11 @@ export default function Home() {
           게임 시작
         </Link>
       </section>
+
+      <section className="mx-auto mt-20 text-center">
+        <div className="my-2 text-lg">PC 환경에서 플레이해 주세요.</div>
+        <div className="text-slate-400">게임 제작: 김연준 (컴퓨터공학부)</div>
+      </section>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function SnupiaBanner() {
   return (
-    <div className="w-full mt-40 mb-40 flex bg-black">
+    <div className="w-full mt-40 mb-20 flex bg-black">
       <div className="text-center mx-auto flex items-center">
         <Image
           src={"/logo.png"}
