@@ -16,11 +16,11 @@ const pitchname = [
   "E",
   "F",
   "G",
-  "A#",
-  "C#",
-  "D#",
-  "F#",
-  "G#",
+  "Bb",
+  "Db",
+  "Eb",
+  "Gb",
+  "Ab",
 ];
 const notename = [
   "라",
@@ -85,6 +85,17 @@ export default function Game() {
 
   useEffect(() => {
     if (answer == -1) return;
+
+    // Play key sound
+    const tmp = getPitch(answer);
+    const sound = new Audio(
+      `/piano-mp3/${
+        (tmp[0] == "A" && tmp.length == 2) || tmp[0] == "B"
+          ? getPitch(answer - 12)
+          : tmp
+      }.mp3`
+    );
+    sound.play();
 
     // Check answer
     const correctAnswer = getKeyFromQuizIdx(quizIdx);
