@@ -47,7 +47,10 @@ export default function Game() {
   const [keyHitTime, setKeyHitTime] = useState(null);
 
   const [quizList, setQuizList] = useState([]);
-  const [quizIdx, setQuizIdx] = useState(0);
+  const [quizIdx, setQuizIdx] = useState({
+    dif: 0, // difficulty
+    idx: 0, // index
+  });
   const [answer, setAnswer] = useState(-1);
   const [lastAnswer, setLastAnswer] = useState(-1);
 
@@ -60,27 +63,31 @@ export default function Game() {
     setCorrectCnt(0);
     setGameStatus(0);
     setQuizList(images?.images);
-    setQuizIdx(Math.floor(Math.random() * images?.images[0]?.length));
+    setQuizIdx({
+      dif: 0,
+      idx: Math.floor(Math.random() * images?.images[0]?.length),
+    });
   }
 
   useEffect(() => {
     if (images.loading == false && quizList?.length == 0) initGame();
   }, [images]);
 
-  const difficulty = useMemo(() => {
-    if (correctCnt < 6) return 0;
-    else if (correctCnt < 15) return 1;
-    else return 2;
-  }, [correctCnt]);
-
   function updateQuizIdx() {
-    const newIdx = Math.floor(Math.random() * quizList[difficulty].length);
+    let newDif; // new Difficulty
+    if (correctCnt < 6) newDif = 0;
+    else if (correctCnt < 15) newDif = 1;
+    else newDif = 2;
 
-    if (newIdx == quizIdx) {
-      setQuizIdx((quizIdx + 1) % quizList[difficulty].length);
-    } else {
-      setQuizIdx(newIdx);
+    let newIdx = Math.floor(Math.random() * quizList[quizIdx.dif].length);
+    if (newIdx == quizIdx.idx) {
+      newIdx = (quizIdx.idx + 1) % quizList[quizIdx.dif].length;
     }
+
+    setQuizIdx({
+      dif: newDif,
+      idx: newIdx,
+    });
   }
 
   useEffect(() => {
@@ -98,7 +105,7 @@ export default function Game() {
     sound.play();
 
     // Check answer
-    const correctAnswer = getKeyFromQuizIdx(quizIdx);
+    const correctAnswer = getKeyFromQuizIdx(quizIdx.idx);
     if (answer == correctAnswer) {
       //alert("정답!");
       setCorrectCnt(correctCnt + 1);
@@ -125,9 +132,9 @@ export default function Game() {
       return `${pitchname[key % 12]}${octavename[Math.floor(key / 12)]}`;
     }
   }
-  function getKeyFromQuizIdx(idx) {
-    console.log(quizList[difficulty]);
-    const t = quizList[difficulty][idx].slice(1);
+  function getKeyFromQuizIdx() {
+    //console.log(quizList[quizIdx.dif]);
+    const t = quizList[quizIdx.dif][quizIdx.idx].slice(1);
     return parseInt(t.slice(t.indexOf("/") + 3, [t.indexOf("_")]));
   }
 
@@ -140,15 +147,15 @@ export default function Game() {
       <section className="mx-auto my-4">
         {quizList?.length > 0 ? (
           <div className="flex items-center">
-            <div className="w-32" />
+            <div className="w-36" />
             <Score
-              imgsrc={quizList[difficulty][quizIdx]}
+              imgsrc={quizList[quizIdx.dif][quizIdx.idx]}
               keyHitTime={keyHitTime}
             />
-            <div className="w-32 px-4 text-slate-300 text-center">
-              난이도: {difficulty == 0 && "★"}
-              {difficulty == 1 && "★★"}
-              {difficulty == 2 && "★★★"}
+            <div className="w-36 px-4 text-slate-300 text-center">
+              난이도: {quizIdx.dif == 0 && "★"}
+              {quizIdx.dif == 1 && "★★"}
+              {quizIdx.dif == 2 && "★★★"}
             </div>
           </div>
         ) : (
@@ -193,18 +200,13 @@ export default function Game() {
         </div>
       </section>
       <section className="mx-auto my-4">
-        <Score imgsrc={quizList[difficulty][quizIdx]} />
+        <Score imgsrc={quizList[quizIdx.dif][quizIdx.idx]} />
       </section>
       <section className="mx-auto my-1">
         {gameStatus == 1 && (
-          <TutorialBoard
-            right={getKeyFromQuizIdx(quizIdx)}
-            wrong={lastAnswer}
-          />
+          <TutorialBoard right={getKeyFromQuizIdx()} wrong={lastAnswer} />
         )}
-        {gameStatus == 2 && (
-          <TutorialBoard right={getKeyFromQuizIdx(quizIdx)} />
-        )}
+        {gameStatus == 2 && <TutorialBoard right={getKeyFromQuizIdx()} />}
       </section>
       <section className="mx-auto mt-4 text-center flex items-center">
         <div className="font-bold text-3xl text-green-200">
