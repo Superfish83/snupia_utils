@@ -11,7 +11,12 @@ export default function Game() {
       </section>
 
       <section className="mx-auto my-4">
-        <Score imgsrc={"/quizpic/1/26_1.jpg"} />
+        <div className="relative w-40 h-40">
+          <Score
+            imgsrc={"/quizpic/1/26_1.jpg"}
+            showsrc={"/quizpic/1/26_1.jpg"}
+          />
+        </div>
       </section>
 
       <section className="mx-auto my-1">

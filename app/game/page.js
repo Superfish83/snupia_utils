@@ -148,10 +148,30 @@ export default function Game() {
         {quizList?.length > 0 ? (
           <div className="flex items-center">
             <div className="w-36" />
-            <Score
-              imgsrc={quizList[quizIdx.dif][quizIdx.idx]}
-              keyHitTime={keyHitTime}
-            />
+            <div className="relative w-40 h-40 text-white">
+              {quizList[0]?.map((item, key) => (
+                <Score
+                  key={key}
+                  showsrc={quizList[quizIdx.dif][quizIdx.idx]}
+                  imgsrc={item}
+                />
+              ))}
+              {quizList[1]?.map((item, key) => (
+                <Score
+                  key={key}
+                  showsrc={quizList[quizIdx.dif][quizIdx.idx]}
+                  imgsrc={item}
+                />
+              ))}
+              {quizList[2]?.map((item, key) => (
+                <Score
+                  key={key}
+                  showsrc={quizList[quizIdx.dif][quizIdx.idx]}
+                  imgsrc={item}
+                />
+              ))}
+            </div>
+
             <div className="w-36 px-4 text-slate-300 text-center">
               난이도: {quizIdx.dif == 0 && "★"}
               {quizIdx.dif == 1 && "★★"}
@@ -200,7 +220,12 @@ export default function Game() {
         </div>
       </section>
       <section className="mx-auto my-4">
-        <Score imgsrc={quizList[quizIdx.dif][quizIdx.idx]} />
+        <div className="relative w-40 h-40 text-white">
+          <Score
+            imgsrc={quizList[quizIdx.dif][quizIdx.idx]}
+            showsrc={quizList[quizIdx.dif][quizIdx.idx]}
+          />
+        </div>
       </section>
       <section className="mx-auto my-1">
         {gameStatus == 1 && (
