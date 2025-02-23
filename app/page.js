@@ -13,8 +13,10 @@ export default function Home() {
         </Link>
       </section>
 
-      <section className="mx-auto mt-20 text-center">
-        <div className="my-2 text-lg">PC 환경에서 플레이해 주세요.</div>
+      <section className="mx-auto mt-16 text-center">
+        <div className="my-2 text-lg">
+          PC/태블릿 등 가로로 넓은 화면에서 플레이해 주세요.
+        </div>
         <div className="text-slate-400">게임 제작: 김연준 (컴퓨터공학부)</div>
       </section>
     </div>
