@@ -53,6 +53,7 @@ export default function Game() {
   });
   const [answer, setAnswer] = useState(-1);
   const [lastAnswer, setLastAnswer] = useState(-1);
+  const [lastCorrect, setLastCorrect] = useState(-1);
 
   const images = useImages("quizpic");
 
@@ -106,18 +107,18 @@ export default function Game() {
 
     // Check answer
     const correctAnswer = getKeyFromQuizIdx(quizIdx.idx);
+
     if (answer == correctAnswer) {
       //alert("정답!");
       setCorrectCnt(correctCnt + 1);
-
-      // 다음 문제 출제
-      setKeyHitTime(Date.now());
-      setTimeout(updateQuizIdx, 70);
-    } else {
-      //alert("오답!");
-      if (!DEBUGMODE) setGameStatus(1);
     }
+
+    setLastCorrect(correctAnswer);
     setLastAnswer(answer);
+
+    // 다음 문제 출제
+    setKeyHitTime(Date.now());
+    updateQuizIdx();
 
     setAnswer(-1);
   }, [answer]);
@@ -188,6 +189,7 @@ export default function Game() {
       <section className="mx-auto my-1">
         <AnswerBoard
           setAnswer={setAnswer}
+          lastCorrect={lastCorrect}
           lastAnswer={lastAnswer}
           keyHitTime={keyHitTime}
         />
@@ -213,11 +215,7 @@ export default function Game() {
   const GameOver = () => (
     <div className="w-full h-full flex flex-col">
       <section className="mx-auto mt-12 font-bold text-xl text-center">
-        <div className="text-3xl text-red-300 font-bold">
-          게임 오버!
-          {gameStatus == 1 && ` 오답을 눌렀습니다.`}
-          {gameStatus == 2 && ` 제한 시간 종료`}
-        </div>
+        <div className="text-3xl text-red-300 font-bold">게임 오버!</div>
       </section>
       <section className="mx-auto my-4">
         <div className="relative w-40 h-40 text-white">
@@ -228,10 +226,7 @@ export default function Game() {
         </div>
       </section>
       <section className="mx-auto my-1">
-        {gameStatus == 1 && (
-          <TutorialBoard right={getKeyFromQuizIdx()} wrong={lastAnswer} />
-        )}
-        {gameStatus == 2 && <TutorialBoard right={getKeyFromQuizIdx()} />}
+        <TutorialBoard wrong={getKeyFromQuizIdx()} />
       </section>
       <section className="mx-auto mt-4 text-center flex items-center">
         <div className="font-bold text-3xl text-green-200">

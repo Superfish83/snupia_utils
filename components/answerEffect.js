@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function AnswerEffect({ keyHitTime, isblack }) {
+export default function AnswerEffect({ keyHitTime, isblack, wrong = false }) {
   // timer used for correct answer effect
   const [msElapsed, setMsElapsed] = useState(-1);
   const [greenOpacity, setGreenOpacity] = useState(0.0);
@@ -17,7 +17,15 @@ export default function AnswerEffect({ keyHitTime, isblack }) {
   return (
     greenOpacity > 0 && (
       <div
-        className={`w-full h-full ${isblack ? "bg-green-800" : "bg-green-400"}`}
+        className={`w-full h-full ${
+          wrong
+            ? isblack
+              ? "bg-red-800"
+              : "bg-red-400"
+            : isblack
+            ? "bg-green-800"
+            : "bg-green-400"
+        }`}
         style={{ opacity: greenOpacity }}
       />
     )

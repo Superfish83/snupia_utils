@@ -1,6 +1,11 @@
 import AnswerEffect from "./answerEffect";
 
-export default function AnswerBoard({ setAnswer, lastAnswer, keyHitTime }) {
+export default function AnswerBoard({
+  setAnswer,
+  lastCorrect,
+  lastAnswer,
+  keyHitTime,
+}) {
   const boardW = 1200;
   const boardH = 220;
   const boardStyle = {
@@ -41,8 +46,15 @@ export default function AnswerBoard({ setAnswer, lastAnswer, keyHitTime }) {
             setAnswer(id);
           }}
         >
-          {id == lastAnswer && (
+          {id == lastCorrect && (
             <AnswerEffect keyHitTime={keyHitTime} isblack={isblack} />
+          )}
+          {id == lastAnswer && lastAnswer != lastCorrect && (
+            <AnswerEffect
+              keyHitTime={keyHitTime}
+              isblack={isblack}
+              wrong={true}
+            />
           )}
         </button>
       </>
