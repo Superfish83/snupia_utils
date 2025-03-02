@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="my-14 mx-auto text-2xl font-bold">SNUPia utils</div>
+      <div className="mt-24 mb-10 mx-auto text-2xl font-bold">SNUPia utils</div>
 
       <div className="my-8 mx-auto text-xl p-2 border-2 border-white rounded-lg">
         동아리 소개제 웹게임
