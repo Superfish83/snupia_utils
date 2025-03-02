@@ -1,15 +1,23 @@
+"use client";
+
+import ConcertBanner from "@/components/concert/concertBanner";
+import PieceInfo from "@/components/concert/pieceInfo";
 import Link from "next/link";
 
 export default function Home() {
+  const piecedata = require("@/public/concert/pieceData.json");
+  console.log(piecedata);
+
   return (
-    <div className="w-full h-full flex flex-col">
-      <div className="my-20 mx-auto text-2xl font-bold">SNUPia</div>
-      <Link href={"/sightread"} className="systemBtn">
-        오선지 초견 게임
-      </Link>
-      <Link href={"/concert/book-33rd"} className="systemBtn">
-        33회 정기연주회 프로그램북
-      </Link>
-    </div>
+    <>
+      <div className="h-screen">
+        <ConcertBanner />
+      </div>
+      <div className="bg-slate-800 w-full h-full px-2 py-10">
+        {piecedata.map((data, key) => (
+          <PieceInfo data={data} key={key} />
+        ))}
+      </div>
+    </>
   );
 }
