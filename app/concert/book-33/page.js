@@ -15,7 +15,7 @@ export default function Home() {
         <ConcertBanner />
       </div>
       <section className="bg-gray-800 w-full flex flex-col">
-        <section className="mx-auto mt-10 text-3xl font-bold border-b-2 px-14 py-4 ">
+        <section className="mx-auto mt-10 text-3xl font-bold border-b-2 w-40 text-center py-4 ">
           축사
         </section>
         <div className="px-6 my-8">
@@ -28,7 +28,7 @@ export default function Home() {
           <div>SNUPia OB 회장</div>
           <div>문지원 (피아노12) 드림</div>
         </div>
-        <section className="mx-auto mt-10 text-3xl font-bold border-b-2 px-14 py-4 ">
+        <section className="mx-auto mt-10 text-3xl font-bold border-b-2 w-40 text-center py-4 ">
           1부
         </section>
         <section className="px-2 py-10">
@@ -36,10 +36,10 @@ export default function Home() {
             <PieceInfo data={data} key={key} />
           ))}
         </section>
-        <section className="mx-auto mt-10 text-xl italic border-b-2 px-6 py-4 ">
+        <section className="mx-auto mt-6 font-bold italic border-b-2 w-40 text-center py-4 ">
           Intermission
         </section>
-        <section className="mx-auto mt-10 text-3xl font-bold border-b-2 px-14 py-4 ">
+        <section className="mx-auto mt-10 text-3xl font-bold border-b-2 w-40 text-center py-4 ">
           2부
         </section>
         <section className="px-2 py-10">
