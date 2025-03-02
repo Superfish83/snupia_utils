@@ -1,7 +1,7 @@
 "use client";
 
-import Score from "@/components/score";
-import TutorialBoard from "@/components/tutorialBoard";
+import Score from "@/components/sightread/score";
+import TutorialBoard from "@/components/sightread/tutorialBoard";
 
 export default function Game() {
   return (

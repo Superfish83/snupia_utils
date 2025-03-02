@@ -34,7 +34,7 @@ export default function TutorialBoard({ gamestart, right, wrong }) {
         <Link
           className={`absolute border-slate-500 border bg-green-200 hover:bg-green-300`}
           style={keyStyle}
-          href={"/game"}
+          href={"/sightread/game"}
           onClick={() => {
             // Play key sound
             const sound = new Audio(`/piano-mp3/C4.mp3`);

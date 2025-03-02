@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="my-20 mx-auto text-2xl font-bold">SNUPia utils page</div>
+      <div className="my-20 mx-auto text-2xl font-bold">SNUPia</div>
       <Link href={"/sightread"} className="systemBtn">
         오선지 초견 게임
       </Link>

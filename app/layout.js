@@ -8,8 +8,8 @@ const notoSansKr = Noto_Sans_KR({
 });
 
 export const metadata = {
-  title: "오선지 초견 게임",
-  description: "2025-1 SNUPia 동아리소개제",
+  title: "SNUPia utils",
+  description: "",
 };
 
 export default function RootLayout({ children }) {

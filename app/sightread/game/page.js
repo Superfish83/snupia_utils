@@ -1,9 +1,9 @@
 "use client";
 
-import AnswerBoard from "@/components/answerBoard";
-import Score from "@/components/score";
-import Timer from "@/components/timer";
-import TutorialBoard from "@/components/tutorialBoard";
+import AnswerBoard from "@/components/sightread/answerBoard";
+import Score from "@/components/sightread/score";
+import Timer from "@/components/sightread/timer";
+import TutorialBoard from "@/components/sightread/tutorialBoard";
 import useImages from "@/hooks/useImages";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -232,7 +232,7 @@ export default function Game() {
         <div className="font-bold text-3xl text-green-200">
           맞힌 개수: {correctCnt}개
         </div>
-        <Link className="ml-10 systemBtn" href={"/"}>
+        <Link className="ml-10 systemBtn" href={"/sightread"}>
           메인 화면으로
         </Link>
       </section>
