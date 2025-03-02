@@ -3,9 +3,11 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="mt-24 mb-10 mx-auto text-2xl font-bold">SNUPia utils</div>
+      <div className="mt-14 mb-4 mx-auto text-2xl font-bold border-2 p-4 rounded-lg">
+        SNUPia utils
+      </div>
 
-      <div className="my-8 mx-auto text-xl p-2 border-2 border-white rounded-lg">
+      <div className="mt-8 mb-2 mx-auto text-xl p-2 border-b-2 ">
         동아리 소개제 웹게임
       </div>
 
@@ -16,7 +18,7 @@ export default function Home() {
         피아노 음악 퀴즈
       </Link>
 
-      <div className="my-8 mx-auto text-xl p-2 border-2 border-white rounded-lg">
+      <div className="mt-8 mb-2 mx-auto text-xl p-2 border-b-2 ">
         정기연주회
       </div>
 
