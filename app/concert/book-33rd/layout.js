@@ -1,4 +1,4 @@
-import "../globals.css";
+import "../../globals.css";
 
 export const metadata = {
   title: "SNUPia 제 33회 정기연주회",
