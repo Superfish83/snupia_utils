@@ -22,7 +22,7 @@ export default function Home() {
         정기연주회
       </div>
 
-      <Link href={"/concert/book-33rd"} className="systemBtn">
+      <Link href={"/concert/book-33"} className="systemBtn">
         33회 정기연주회 프로그램북
       </Link>
     </div>

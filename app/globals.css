@@ -6,6 +6,10 @@ body {
   @apply bg-black text-white;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .systemBtn {
   @apply text-lg font-bold mx-auto my-4
    bg-blue-800 hover:bg-blue-600
