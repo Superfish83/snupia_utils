@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="mt-14 mb-4 mx-auto text-2xl font-bold border-2 p-4 rounded-lg">
+      <div className="mt-14 mb-4 mx-auto text-2xl font-bold border-x-4 px-6 py-4 rounded-xl">
         SNUPia utils
       </div>
 
