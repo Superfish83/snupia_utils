@@ -3,19 +3,25 @@
 import ConcertBanner from "@/components/concert/concertBanner";
 import PieceInfo from "@/components/concert/pieceInfo";
 import Image from "next/image";
+import { useRef } from "react";
 
 export default function Home() {
   const piecedata1 = require("@/public/concert/pieceData1.json");
   const piecedata2 = require("@/public/concert/pieceData2.json");
   const chuksa = require("@/public/concert/celebration.json");
 
+  const chuksaRef = useRef();
+
   return (
     <>
       <div className="h-screen">
-        <ConcertBanner />
+        <ConcertBanner chuksaRef={chuksaRef} />
       </div>
-      <section className="bg-gray-800 w-full flex flex-col">
-        <section className="mx-auto mt-10 text-3xl font-bold border-b-2 w-40 text-center py-4 ">
+      <section className="bg-black w-full md:w-2/3 md:mx-auto lg:w-1/2 flex flex-col">
+        <section
+          ref={chuksaRef}
+          className="mx-auto mt-10 text-3xl font-bold border-b-2 w-40 text-center py-4 "
+        >
           축사
         </section>
         <div className="px-6 my-8">
