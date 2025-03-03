@@ -26,7 +26,7 @@ export default function ConcertBanner({ chuksaRef }) {
     <section className="w-full h-full relative flex items-center bg-black">
       <AnimatePresence>
         <motion.div
-          className="relative"
+          className="relative mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.0, delay: 0.5 }}
