@@ -44,7 +44,7 @@ export default function PieceInfo({ data }) {
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 {data.desc1.map((text, key) => (
-                  <div key={key} className="mb-1">
+                  <div key={key} className="mb-2">
                     {"⠀"}
                     {text}
                   </div>
@@ -66,7 +66,7 @@ export default function PieceInfo({ data }) {
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 {data.desc2.map((text, key) => (
-                  <div key={key} className="mb-1">
+                  <div key={key} className="mb-2">
                     {"⠀"}
                     {text}
                   </div>
