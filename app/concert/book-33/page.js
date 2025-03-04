@@ -53,16 +53,17 @@ export default function Home() {
             <PieceInfo data={data} key={key} />
           ))}
         </section>
-        <footer className="bg-black mt-20 h-32 flex flex-col text-center">
+        <footer className="bg-black h-32 flex text-left items-center">
           <Image
             src={"/logo.png"}
             alt="logo"
             width={100}
             height={100}
-            className="mx-auto w-10 h-10 mt-8"
+            className="ml-auto w-10 h-10"
           />
-          <div className="text-slate-400 mt-2 text-sm">
-            SNUPia 제33회 정기연주회 온라인 팸플릿
+          <div className="text-slate-200 mr-auto ml-2 text-sm">
+            <div>SNUPia 2025</div>
+            <div>제33회 정기연주회</div>
           </div>
         </footer>
       </section>

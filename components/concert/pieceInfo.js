@@ -13,20 +13,16 @@ export default function PieceInfo({ data }) {
             setOpen(!open);
           }}
         >
-          <div>
-            <div className="font-bold text-sm text-slate-200">
-              {data.composer}
-            </div>
+          <div className="text-sm">
+            <div className="font-bold text-slate-200">{data.composer}</div>
             <div className="font-bold">{data.title}</div>
             <div className="flex items-center">
               <div className="">{data.performer_name} </div>
-              <div className="text-slate-400 text-sm ml-1 mt-1">
-                ({data.performer_info})
-              </div>
+              <div className="text-slate-200 ml-1">({data.performer_info})</div>
             </div>
           </div>
           {data.desc1 && (
-            <div className="text-slate-400 ml-auto">{open ? "▲" : "▼"}</div>
+            <div className="text-slate-500 ml-auto">{open ? "▲" : "▼"}</div>
           )}
         </section>
 
@@ -37,7 +33,7 @@ export default function PieceInfo({ data }) {
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-blue-200 text-lg text-center my-2"
+                className="text-blue-100 font-bold text-center my-2"
               >
                 연주자 인삿말
               </motion.div>
@@ -59,7 +55,7 @@ export default function PieceInfo({ data }) {
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-blue-200 text-lg mt-4 mb-2 text-center"
+                className="text-blue-100 font-bold mt-4 mb-2 text-center"
               >
                 곡 소개
               </motion.div>

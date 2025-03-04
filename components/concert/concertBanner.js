@@ -33,7 +33,7 @@ export default function ConcertBanner({ chuksaRef }) {
         >
           {poster ? (
             <Image
-              src="/concert/poster.png"
+              src="/concert/poster.jpg"
               alt="poster"
               width={1130}
               height={742}
@@ -43,7 +43,7 @@ export default function ConcertBanner({ chuksaRef }) {
             <TempPoster />
           )}
           <div className="absolute top-0 left-0 h-full w-full flex flex-col">
-            <div className="w-full h-4/5"></div>
+            <div className="w-full h-5/6"></div>
             {showBtn && (
               <motion.div
                 className="mx-auto"
