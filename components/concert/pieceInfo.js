@@ -15,7 +15,7 @@ export default function PieceInfo({ data }) {
         >
           <div className="text-sm">
             <div className="font-bold text-slate-200">{data.composer}</div>
-            <div className="font-bold">{data.title}</div>
+            <div className="font-bold text-base">{data.title}</div>
             <div className="flex items-center">
               <div className="">{data.performer_name} </div>
               <div className="text-slate-200 ml-1">({data.performer_info})</div>
@@ -44,7 +44,7 @@ export default function PieceInfo({ data }) {
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 {data.desc1.map((text, key) => (
-                  <div key={key} className="mb-2">
+                  <div key={key} className="mb-1">
                     {"⠀"}
                     {text}
                   </div>
@@ -66,7 +66,7 @@ export default function PieceInfo({ data }) {
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 {data.desc2.map((text, key) => (
-                  <div key={key} className="mb-2">
+                  <div key={key} className="mb-1">
                     {"⠀"}
                     {text}
                   </div>
