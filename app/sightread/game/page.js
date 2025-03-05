@@ -76,8 +76,8 @@ export default function Game() {
 
   function updateQuizIdx() {
     let newDif; // new Difficulty
-    if (correctCnt < 6) newDif = 0;
-    else if (correctCnt < 15) newDif = 1;
+    if (correctCnt < 7) newDif = 0;
+    else if (correctCnt < 20) newDif = 1;
     else newDif = 2;
 
     let newIdx = Math.floor(Math.random() * quizList[quizIdx.dif].length);
@@ -203,7 +203,7 @@ export default function Game() {
       <section className="mx-auto my-4">
         {quizList.length > 0 && (
           <Timer
-            seconds={DEBUGMODE ? 3000 : 30}
+            seconds={DEBUGMODE ? 3000 : 45}
             barSize={1000}
             setGameStatus={setGameStatus}
           />

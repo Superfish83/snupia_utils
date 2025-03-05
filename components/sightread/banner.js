@@ -13,7 +13,7 @@ export default function SnupiaBanner() {
         />
         <div className="flex flex-col items-center text-white font-bold">
           <div className="text-2xl">서울대학교 중앙 피아노 동아리 SNUPia</div>
-          <div className="text-5xl my-2">오선지 초견 게임</div>
+          <div className="text-5xl my-2">피아노 초견 스피드 게임</div>
         </div>
       </div>
     </div>

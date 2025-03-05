@@ -26,7 +26,7 @@ export default function Game() {
 
       <section className="mx-auto my-4">
         <div className="font-bold text-xl">
-          초록색으로 표시된 가온 도(C4) 음을 누르면 게임이 시작됩니다!
+          초록색으로 표시된 가온 도(C4) 음을 클릭하면 게임이 시작됩니다!
         </div>
       </section>
     </div>
