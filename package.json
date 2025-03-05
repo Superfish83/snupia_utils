@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "express": "^4.21.2",
     "framer-motion": "^12.4.7",
     "fs": "^0.0.1-security",
+    "mongodb": "^6.14.2",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

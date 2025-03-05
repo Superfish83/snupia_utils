@@ -1,0 +1,325 @@
+{
+    "jazz": [
+      {
+        "id": "6Wa7El-k3jQ",
+        "title": "Parker's Mood",
+        "artist": "Charlie Parker"
+      },
+      {
+        "id": "KwIC6B_dvW4",
+        "title": "Giant Steps",
+        "artist": "John Coltrane"
+      },
+      {
+        "id": "L0h2bBLy4kQ",
+        "title": "Hotel 49",
+        "artist": "Chet Baker"
+      },
+      {
+        "id": "vKNZqM0d-xo",
+        "title": "Blue Rondo a la Turk",
+        "artist": "The Dave Brubeck Quartet"
+      },
+      {
+        "id": "AFTC1Fg9cXQ",
+        "title": "Autumn Leaves",
+        "artist": "Chet Baker"
+      },
+      {
+        "id": "lI5ORDi7yOs",
+        "title": "All of Me",
+        "artist": "Billie Holiday"
+      },
+      {
+        "id": "PrEcT2Q51l",
+        "title": "C Jam Blues",
+        "artist": "Oscar Peterson Trio"
+      },
+      {
+        "id": "ylXk1LBvIqU",
+        "title": "So What",
+        "artist": "Miles Davis"
+      },
+      {
+        "id": "-DHuW1h1wHw",
+        "title": "Take Five",
+        "artist": "The Dave Brubeck Quartet"
+      },
+      {
+        "id": "IKayR1oqC7w",
+        "title": "Round Midnight",
+        "artist": "Thelonious Monk"
+      },
+      {
+        "id": "uJs2eCqhTN0",
+        "title": "Straight, No Chaser",
+        "artist": "Thelonious Monk"
+      },
+      {
+        "id": "ZEcqHA7dbwM",
+        "title": "Fly Me To The Moon",
+        "artist": "Frank Sinatra"
+      }
+    ],
+    "classic":[
+      {
+        "id": "NWWbA5H5pEs",
+        "title": "운명 교향곡",
+        "artist": "베토벤"
+      },
+      {
+        "id": "s6F5OwdhBA0",
+        "title": "월광 소나타",
+        "artist": "베토벤"
+      },
+      {
+        "id": "MscO89GFPck",
+        "title": "터키 행진곡",
+        "artist": "모차르트"
+      },
+      {
+        "id": "czBSj6_6rkE",
+        "title": "아이네 클라이네 나흐트무지크",
+        "artist": "모차르트"
+      },
+      {
+        "id": "NbY7N1ZNbuc",
+        "title": "사계: 봄",
+        "artist": "비발디"
+      },
+      {
+        "id": "4eqeQb6iUIE",
+        "title": "사계: 겨울",
+        "artist": "비발디"
+      },
+      {
+        "id": "mbrvUe1BD0U",
+        "title": "헝가리 무곡 5번",
+        "artist": "브람스"
+      },
+      {
+        "id": "VS2i23k5AEM",
+        "title": "왕벌의 비행",
+        "artist": "림스키코르사코프"
+      },
+      {
+        "id": "-420RxUtdHk",
+        "title": "즐거운 농부",
+        "artist": "슈만"
+      },
+      {
+        "id": "PBhJ0XSFtmw",
+        "title": "백조",
+        "artist": "생상스"
+      },
+      {
+        "id": "TNe3mjdXVW4",
+        "title": "G선상의 아리아",
+        "artist": "바흐"
+      },
+      {
+        "id": "AFjcjYss5Hs",
+        "title": "예수, 인류의 기쁨",
+        "artist": "바흐"
+      },
+      {
+        "id": "e47320SGwlc",
+        "title": "환희의 송가",
+        "artist": "베토벤"
+      },
+      {
+        "id": "RN_8mBtynCg",
+        "title": "엘리제를 위하여",
+        "artist": "베토벤"
+      },
+      {
+        "id": "ZEKKbzZmLgc",
+        "title": "작은 별 변주곡",
+        "artist": "모차르트"
+      },
+      {
+        "id": "TUX3R4TKJXA",
+        "title": "군대 행진곡",
+        "artist": "슈베르트"
+      },
+      {
+        "id": "VKQQH5OchBc",
+        "title": "송어",
+        "artist": "슈베르트"
+      },
+      {
+        "id": "5sVNk-fSKRQ",
+        "title": "사랑의 꿈",
+        "artist": "리스트"
+      },
+      {
+        "id": "8sQA53Op2U8",
+        "title": "라 캄파넬라",
+        "artist": "리스트"
+      },
+      {
+        "id": "wkNccP146Hk",
+        "title": "헝가리 랩소디 2번",
+        "artist": "리스트"
+      },
+      {
+        "id": "tTGEo3scnq8",
+        "title": "녹턴 Op.9 No.2",
+        "artist": "쇼팽"
+      },
+      {
+        "id": "d3IKMiv8AHw",
+        "title": "영웅 폴로네이즈",
+        "artist": "쇼팽"
+      },
+      {
+        "id": "lr1RTyvDb4U",
+        "title": "혁명",
+        "artist": "쇼팽"
+      },
+      {
+        "id": "dHwhfpN--Bk",
+        "title": "즉흥환상곡",
+        "artist": "쇼팽"
+      },
+      {
+        "id": "BNQlTLezTxE",
+        "title": "강아지 왈츠",
+        "artist": "쇼팽"
+      },
+      {
+        "id": "hU3UrLkW89Y",
+        "title": "봄의 소리 왈츠",
+        "artist": "요한 슈트라우스 2세"
+      },
+      {
+        "id": "QUD9176KNV8",
+        "title": "아름답고 푸른 도나우",
+        "artist": "요한 슈트라우스 2세"
+      },
+      {
+        "id": "FGfMCdUgKes",
+        "title": "라데츠키 행진곡",
+        "artist": "요한 슈트라우스 1세"
+      },
+      {
+        "id": "ficFHL-Nuiw",
+        "title": "카르멘 서곡",
+        "artist": "비제"
+      },
+      {
+        "id": "Vt465C65MAU",
+        "title": "투우사의 노래",
+        "artist": "비제"
+      },
+      {
+        "id": "BXqMAe4H8Pw",
+        "title": "하바네라",
+        "artist": "비제"
+      },
+      {
+        "id": "2vQTgbw0AlM",
+        "title": "결혼행진곡",
+        "artist": "멘델스존"
+      },
+      {
+        "id": "YhjIMOfmDdQ",
+        "title": "봄노래",
+        "artist": "멘델스존"
+      },
+      {
+        "id": "6jSLH9CDPPQ",
+        "title": "캐논",
+        "artist": "파헬벨"
+      },
+      {
+        "id": "OzhsoSo-4dU",
+        "title": "자장가",
+        "artist": "브람스"
+      },
+      {
+        "id": "AJuFMTHDl1Y",
+        "title": "피아노 협주곡 1번",
+        "artist": "차이코프스키"
+      },
+      {
+        "id": "lGvucG6UW10",
+        "title": "호두까기 인형 모음곡",
+        "artist": "차이코프스키"
+      },
+      {
+        "id": "wZaboVf5jdI",
+        "title": "백조의 호수",
+        "artist": "차이코프스키"
+      },
+      {
+        "id": "97_VJve7UVc",
+        "title": "클레르 드 룬 (Clair de Lune)",
+        "artist": "드뷔시"
+      },
+      {
+        "id": "D0pyD7y2jFI",
+        "title": "아라베스크 1번",
+        "artist": "드뷔시"
+      },
+      {
+        "id": "BxMmBvdYdXY",
+        "title": "볼레로",
+        "artist": "라벨"
+      },
+      {
+        "id": "B4-4a4A1kzg",
+        "title": "파반느",
+        "artist": "포레"
+      },
+      {
+        "id": "9Rt7EAmZ62c",
+        "title": "카발레리아 루스티카나",
+        "artist": "마스카니"
+      },
+      {
+        "id": "u-qHtYfktiQ",
+        "title": "사라방드",
+        "artist": "헨델"
+      },
+      {
+        "id": "IueFDoUxPt8",
+        "title": "할렐루야",
+        "artist": "헨델"
+      },
+      {
+        "id": "cDyadF3Zc6g",
+        "title": "마왕",
+        "artist": "슈베르트"
+      },
+      {
+        "id": "h7O4pu9hkvg",
+        "title": "아베 마리아",
+        "artist": "슈베르트"
+      },
+      {
+        "id": "EJC-_j3SnXk",
+        "title": "카르미나 부라나 (Carmen Brana)",
+        "artist": "오르프"
+      },
+      {
+        "id": "9E6b3swbnWg",
+        "title": "비창 소나타",
+        "artist": "베토벤"
+      }
+    ],
+    "korean": [
+      {
+        "id": "4d5e6f7g8h9i0j1a2b3c",
+        "title": "Korean Song 1",
+        "artist": "Korean Artist 1"
+      }
+    ],
+    "metal": [
+      {
+        "id": "5e6f7g8h9i0j1a2b3c4d",
+        "title": "Metal Song 1",
+        "artist": "Metal Artist 1"
+      }
+    ]
+}

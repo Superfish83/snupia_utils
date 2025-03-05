@@ -1,0 +1,23 @@
+[
+  {
+    "difficulty": "미친",
+    "name": "김민재",
+    "department": "전기정보공학부",
+    "studentId": "23",
+    "score": 4
+  },
+  {
+    "difficulty": "입문자",
+    "name": "김만재",
+    "department": "전기정보공학부",
+    "studentId": "24",
+    "score": 6
+  },
+  {
+    "difficulty": "고수",
+    "name": "김민재",
+    "department": "전기정보공학부",
+    "studentId": "25",
+    "score": 9
+  }
+]
