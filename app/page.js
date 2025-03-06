@@ -35,7 +35,7 @@ export default function Home() {
             className="w-80 rounded-xl"
           />
           <Link
-            href={"https://snupia.kr/play/"}
+            href={"/guessthemusic"}
             className="systemBtn mx-auto mt-4"
           >
             피아노 음악 퀴즈
