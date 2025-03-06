@@ -232,8 +232,8 @@ export default function Game() {
         <div className="font-bold text-3xl text-green-200">
           맞힌 개수: {correctCnt}개
         </div>
-        <Link className="ml-10 systemBtn" href={"/sightread"}>
-          메인 화면으로
+        <Link className="ml-10 systemBtn" href={"/qr"}>
+          게임 종료
         </Link>
       </section>
     </div>

@@ -45,6 +45,9 @@ export default function Home() {
       <div className="mx-auto mt-10 text-slate-400">
         웹게임 제작: SNUPia 집행부 김민재, 김연준
       </div>
+      <Link href={"/qr"} className="mx-auto mt-4 text-blue-400">
+        QR codes
+      </Link>
     </div>
   );
 }
