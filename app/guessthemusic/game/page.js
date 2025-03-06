@@ -25,6 +25,9 @@ export default function GuessTheMusicPage() {
   const [department, setDepartment] = useState("");
   const [studentId, setStudentId] = useState("");
   const [samplePlayed, setSamplePlayed] = useState(false);
+  const [shakingButton, setShakingButton] = useState(null);
+  const [notifications, setNotifications] = useState([]);
+  const [showPlayer, setShowPlayer] = useState(false);
 
   useEffect(() => {
     if (step === 3 && genre) {
@@ -119,11 +122,27 @@ export default function GuessTheMusicPage() {
       playerRef.current = null;
     }
     setSamplePlayed(false);
-    if (selected === questions[currentQuestion].title) {
-      setMessage("정답입니다!");
-      setScore(prev => prev + 1);
+    setShowPlayer(true);
+
+    const correctTitle = questions[currentQuestion].title;
+    const correctArtist = questions[currentQuestion].artist;
+    const selectedTitle = selected.split(' - ')[0].trim();
+
+    if (selectedTitle === correctTitle) {
+      setMessage(
+        <>
+          정답입니다!<br />
+          {correctArtist}의 {correctTitle}입니다.
+        </>
+      );
+      setScore(prev => Math.round((prev + 1) * 100) / 100);
     } else {
-      setMessage(`틀렸습니다! 정답은 ${questions[currentQuestion].title}입니다.`);
+      setMessage(
+        <>
+          틀렸습니다!<br />
+          정답은 {correctArtist}의 {correctTitle}입니다.
+        </>
+      );
       setLives(prev => prev - 1);
       if (lives - 1 <= 0) {
         setMessage("게임 오버!");
@@ -131,12 +150,21 @@ export default function GuessTheMusicPage() {
         return;
       }
     }
+
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+
     if (currentQuestion + 1 >= questions.length) {
       setTimeout(() => setStep(4), 2000);
     } else {
       setTimeout(() => {
         setCurrentQuestion(prev => prev + 1);
         setMessage("");
+        setShowPlayer(false);
+        setTimeLeft(0);
+        setScore(prev => Math.round(prev * 100) / 100);
       }, 2000);
     }
   };
@@ -165,8 +193,8 @@ export default function GuessTheMusicPage() {
       const videoDuration = playerRef.current.getDuration();
       let startTime = 0;
 
-      // 보통 이상의 난이도에서 랜덤 시작 시간 설정
-      if (['보통', '고수', '작곡가', '악마', '미친'].includes(difficulty)) {
+      // 입문자가 오히려 어려워서 그냥 모두 다 randomize 함
+      if (['입문자', '보통', '고수', '작곡가', '악마', '미친'].includes(difficulty)) {
         startTime = Math.floor(Math.random() * (videoDuration - 15)); // 마지막 15초는 제외
       }
 
@@ -176,10 +204,14 @@ export default function GuessTheMusicPage() {
       setTimeLeft(playTime);
       setSamplePlayed(true);
 
-      const timer = setInterval(() => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+
+      timerRef.current = setInterval(() => {
         setTimeLeft(prev => {
           if (prev <= 1) {
-            clearInterval(timer);
+            clearInterval(timerRef.current);
             if (playerRef.current && typeof playerRef.current.pauseVideo === 'function') {
               playerRef.current.pauseVideo();
             }
@@ -192,8 +224,16 @@ export default function GuessTheMusicPage() {
   };
 
   const handleGenreSelect = (selectedGenre) => {
-    setGenre(selectedGenre);
-    setStep(2);
+    if (selectedGenre === 'metal' || selectedGenre === 'jpop') {
+      setShakingButton(selectedGenre);
+      setNotifications((prev) => [...prev, "미구현된 기능입니다!"]);
+      setTimeout(() => {
+        setShakingButton(null);
+      }, 1500); // 1.5초 후 원래 상태로 복귀
+    } else {
+      setGenre(selectedGenre);
+      setStep(2);
+    }
   };
 
   const handleDifficultySelect = (selectedDifficulty) => {
@@ -223,6 +263,85 @@ export default function GuessTheMusicPage() {
     });
   };
 
+  const handleRevealArtist = () => {
+    setOptions(options.map(option => {
+      const matchingQuestion = questions.find(q => q.title === option);
+      return matchingQuestion ? `${option} - ${matchingQuestion.artist}` : option;
+    }));
+    setScore(prev => prev - 0.5);
+  };
+
+  const handleRemoveOption = () => {
+    const incorrectOptions = options.filter(option => option !== questions[currentQuestion].title);
+    if (incorrectOptions.length > 0) {
+      const optionToDisable = incorrectOptions[Math.floor(Math.random() * incorrectOptions.length)];
+      setOptions(options.map(option => option === optionToDisable ? `${option} (비활성화)` : option));
+      setScore(prev => prev - 0.6);
+    }
+  };
+
+  const handleReplay = () => {
+    if (playerRef.current && isPlayerReady) {
+      playerRef.current.playVideo();
+      const additionalTime = 15; // 추가로 들을 시간
+      setTimeLeft(additionalTime);
+      setScore(prev => prev - 0.5);
+
+      // 기존 타이머를 정지하고 새 타이머 시작
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+      timerRef.current = setInterval(() => {
+        setTimeLeft(prev => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current);
+            timerRef.current = null;
+            if (playerRef.current && typeof playerRef.current.pauseVideo === 'function') {
+              playerRef.current.pauseVideo();
+            }
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+  };
+
+  const handleFreeReplay = () => {
+    if (playerRef.current && isPlayerReady) {
+      playerRef.current.playVideo();
+      const additionalTime = 5; // 추가로 들을 시간
+      setTimeLeft(additionalTime);
+
+      // 기존 타이머를 정지하고 새 타이머 시작
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+      timerRef.current = setInterval(() => {
+        setTimeLeft(prev => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current);
+            timerRef.current = null;
+            if (playerRef.current && typeof playerRef.current.pauseVideo === 'function') {
+              playerRef.current.pauseVideo();
+            }
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    if (notifications.length > 0) {
+      const timer = setTimeout(() => {
+        setNotifications((prev) => prev.slice(1));
+      }, 400);
+      return () => clearTimeout(timer);
+    }
+  }, [notifications]);
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-center relative">
       {step >= 1 && (
@@ -234,15 +353,60 @@ export default function GuessTheMusicPage() {
         </button>
       )}
 
+      {notifications.length > 0 && (
+        <div className="absolute top-4 right-4 flex flex-col space-y-2">
+          {notifications.map((note, index) => (
+            <div
+              key={index}
+              className="bg-red-500 text-white px-4 py-2 rounded shadow-md fade-out shake-notification"
+            >
+              {note}
+            </div>
+          ))}
+        </div>
+      )}
+
       {step === 1 && (
         <div className="flex flex-col items-center justify-center" style={{ marginTop: '10vh' }}>
           <h1 className="text-2xl font-bold mb-8">장르를 선택하세요</h1>
           <div className="flex flex-col space-y-4 mb-8">
-            <h1 className="text-xl font-bold text-center">피아노 편곡을 들어보세요!</h1>
-            <button className="systemBtn" style={{ width: '70vw' }} onClick={() => handleGenreSelect('classic')}>클래식</button>
-            <button className="systemBtn" style={{ width: '70vw' }} onClick={() => handleGenreSelect('jazz')}>재즈</button>
-            <button className="systemBtn" style={{ width: '70vw' }} onClick={() => handleGenreSelect('korean')}>한국가요</button>
-            <button className="systemBtn" style={{ width: '70vw' }} onClick={() => handleGenreSelect('metal')}>메탈</button>
+            <h1 className="text-xl font-bold text-center">당신이 좋아하는 장르는 무엇인가요?</h1>
+            <h1 className="text-xl font-bold text-center">스누피아에서는 좋아하는 곡을 원할 때 언제든 연습할 수 있답니다.</h1>
+            <button
+              className={`systemBtn ${shakingButton === 'classic' ? "bg-gray-400 text-gray-700 shake-button" : ""}`}
+              style={{ width: '70vw' }}
+              onClick={() => handleGenreSelect('classic')}
+            >
+              클래식
+            </button>
+            <button
+              className={`systemBtn ${shakingButton === 'jazz' ? "bg-gray-400 text-gray-700 shake-button" : ""}`}
+              style={{ width: '70vw' }}
+              onClick={() => handleGenreSelect('jazz')}
+            >
+              재즈
+            </button>
+            <button
+              className={`systemBtn ${shakingButton === 'korean' ? "bg-gray-400 text-gray-700 shake-button" : ""}`}
+              style={{ width: '70vw' }}
+              onClick={() => handleGenreSelect('korean')}
+            >
+              한국가요
+            </button>
+            <button
+              className={`systemBtn ${shakingButton === 'metal' ? "bg-gray-400 text-gray-700 shake-button" : ""}`}
+              style={{ width: '70vw' }}
+              onClick={() => handleGenreSelect('metal')}
+            >
+              메탈
+            </button>
+            <button
+              className={`systemBtn ${shakingButton === 'jpop' ? "bg-gray-400 text-gray-700 shake-button" : ""}`}
+              style={{ width: '70vw' }}
+              onClick={() => handleGenreSelect('jpop')}
+            >
+              제이팝
+            </button>
           </div>
         </div>
       )}
@@ -293,7 +457,9 @@ export default function GuessTheMusicPage() {
               />
             ))}
           </div>
-          <div className="text-2xl mb-2 opacity-80">{message}</div>
+
+          <div className="text-2xl mb-2 opacity-80 text-center">{message}</div>
+
           <div className="text-2xl mb-2">
             {isLoading ? "로드 중..." : timeLeft > 0 ? `남은 시간: ${timeLeft}초` : "샘플을 재생하세요!"}
           </div>
@@ -307,12 +473,27 @@ export default function GuessTheMusicPage() {
             {options.map((option, index) => (
               <button
                 key={index}
-                className="systemBtn m-3 rounded-lg"
+                className="systemBtn m-3 rounded-lg option-button"
                 onClick={() => handleAnswer(option)}
               >
                 {option}
               </button>
             ))}
+          </div>
+
+          <div className="flex justify-center space-x-4 mt-4 px-4">
+            <button className="systemBtn bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded" onClick={handleRevealArtist}>
+              누구의?
+            </button>
+            <button className="systemBtn bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded" onClick={handleRemoveOption}>
+              하나 제거
+            </button>
+            <button className="systemBtn bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded" onClick={handleReplay}>
+              계속듣기 (15초)
+            </button>
+            <button className="systemBtn bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded" onClick={handleFreeReplay}>
+              억까변상 (5초)
+            </button>
           </div>
         </>
       )}
@@ -348,6 +529,42 @@ export default function GuessTheMusicPage() {
           </button>
         </div>
       )}
+
+
+
+      <style jsx>{`
+        @keyframes shake {
+          0% { transform: translateX(0); }
+          25% { transform: translateX(-5px); }
+          50% { transform: translateX(5px); }
+          75% { transform: translateX(-5px); }
+          100% { transform: translateX(0); }
+        }
+        .shake-button {
+          animation: shake 0.5s ease-in-out;
+        }
+        .shake-notification {
+          animation: shake 0.2s ease-in-out;
+        }
+        .fade-out {
+          animation: fadeOut 1s ease-in-out forwards;
+        }
+        @keyframes fadeOut {
+          0% { opacity: 1; }
+          100% { opacity: 0; }
+        }
+        .option-button {
+          width: calc(30vw);
+          height: calc(30vw);
+          max-width: calc(30vh);
+          max-height: calc(30vh);
+          flex: 1 0 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+      `}</style>
     </div>
   );
 }

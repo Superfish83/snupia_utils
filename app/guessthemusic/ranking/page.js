@@ -63,10 +63,11 @@ export default function Ranking() {
           onChange={e => setGenre(e.target.value)}
         >
           <option value="전체">전체 장르</option>
-          <option value="classic">클래식</option>
-          <option value="jazz ">재즈</option>
-          <option value="korean">한국가요</option>
-          <option value="metal">메탈</option>
+          <option value="classic">classic</option>
+          <option value="jazz">jazz</option>
+          <option value="korean">korean</option>
+          <option value="metal">metal</option>
+          <option value="jpop">jpop</option>
         </select>
 
         <button
@@ -87,7 +88,7 @@ export default function Ranking() {
       <div className="w-full overflow-auto">
         <table className="w-full text-center">
           <thead>
-            <tr className="bg-gray-200">
+            <tr className="bg-purple-400">
               <th className="p-2">순위</th>
               <th className="p-2">이름</th>
               <th className="p-2">학번</th>
