@@ -39,15 +39,17 @@ export default function Home() {
         height={370}
         className="w-40 h-40 rounded-full mx-auto mt-6"
       />
-      <div className={"px-6 my-4 text-lg " + fontPnight.className}>
+      <div className={"px-6 mt-4 mb-14 text-lg " + fontPnight.className}>
         {chuksa[0].text.map((data, key) => (
           <div key={key} className="my-4">
             {"⠀"}
             {data}
           </div>
         ))}
-        <div className="mt-4">SNUPia OB 회장</div>
-        <div>문지원 (피아노12) 드림</div>
+        <div className="mt-4 text-right">
+          <div>SNUPia OB 회장</div>
+          <div>문지원 (피아노12) 드림</div>
+        </div>
       </div>
     </>
   );
