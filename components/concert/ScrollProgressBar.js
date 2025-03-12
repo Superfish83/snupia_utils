@@ -20,7 +20,7 @@ export default function ScrollProgressBar() {
 
   return (
     <div
-      className="h-1.5 bg-gradient-to-r from-blue-400 to-blue-300 border-b-2 border-slate-900 rounded-full "
+      className="h-2 bg-gradient-to-r from-blue-400 to-blue-300 border-b-2 border-slate-900 rounded-full "
       style={{
         position: "fixed",
         top: 0,

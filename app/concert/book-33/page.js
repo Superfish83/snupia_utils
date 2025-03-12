@@ -7,6 +7,7 @@ import { useRef } from "react";
 
 import localFont from "next/font/local";
 import ScrollProgressBar from "@/components/concert/ScrollProgressBar";
+import Link from "next/link";
 const fontDanjung = localFont({
   src: "./Cafe24Danjunghae-v2.0.woff2",
 });
@@ -37,9 +38,9 @@ export default function Home() {
         alt="jiwonmoon"
         width={370}
         height={370}
-        className="w-40 h-40 rounded-full mx-auto mt-6"
+        className="w-40 h-40 rounded-full mx-auto mt-6 mb-2"
       />
-      <div className={"px-6 mt-4 mb-14 text-lg " + fontPnight.className}>
+      <div className={"px-6 mb-14 text-base " + fontPnight.className}>
         {chuksa[0].text.map((data, key) => (
           <div key={key} className="my-4">
             {"⠀"}
@@ -110,15 +111,39 @@ export default function Home() {
             <PieceInfo data={data} key={key} />
           ))}
         </section>
-        <footer className="bg-black h-32 text-center">
+
+        <footer
+          className={"bg-black py-10 text-center " + fontPnight.className}
+        >
           <Image
             src={"/logo.png"}
             alt="logo"
             width={100}
             height={100}
-            className="mx-auto w-10 h-10 mt-6"
+            className="mx-auto w-12 h-12 my-2"
           />
-          <div className={"pt-2 text-gray-400 text-sm " + fontPnight.className}>
+          <div className={"my-4 "}>
+            <div>방문해 주셔서 감사합니다!</div>
+            <div>About SNUPia</div>
+          </div>
+          <div className="flex font-bold">
+            <Link
+              href="https://www.instagram.com/snupia_snu/"
+              className="ml-auto mr-2 rounded-xl px-4 py-2 bg-gradient-to-br from-violet-700 via-pink-700 to-yellow-300"
+            >
+              Instagram
+            </Link>
+            <Link
+              href="https://www.snupia.kr"
+              className="mr-auto ml-2 rounded-xl px-4 py-2 bg-slate-700"
+            >
+              홈페이지
+            </Link>
+          </div>
+
+          <div
+            className={"pt-10 text-gray-400 text-sm " + fontPnight.className}
+          >
             페이지 제작: 김연준
           </div>
         </footer>

@@ -50,43 +50,41 @@ export default function PieceInfo({ data }) {
               </motion.div>
 
               {data.desc1 && (
-                <>
-                  <motion.div
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                  >
-                    {data.desc1.map((text, key) => (
-                      <div key={key} className="mb-2">
-                        {"⠀"}
-                        {text}
-                      </div>
-                    ))}
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-blue-100 text-lg mt-4 mb-2 text-center"
-                  >
-                    곡 소개
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                  >
-                    {data.desc2.map((text, key) => (
-                      <div key={key} className="mb-2">
-                        {"⠀"}
-                        {text}
-                      </div>
-                    ))}
-                  </motion.div>
-                </>
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  {data.desc1.map((text, key) => (
+                    <div key={key} className="mb-2">
+                      {"⠀"}
+                      {text}
+                    </div>
+                  ))}
+                </motion.div>
               )}
+
+              <motion.div
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-blue-100 text-lg mt-4 mb-2 text-center"
+              >
+                곡 소개
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                {data.desc2.map((text, key) => (
+                  <div key={key} className="mb-2">
+                    {"⠀"}
+                    {text}
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </AnimatePresence>
         )}
