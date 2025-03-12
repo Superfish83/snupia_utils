@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 import { DM_Serif_Display } from "next/font/google";
-const fontDmserif = DM_Serif_Display({ weight: ["400"] });
+const fontDmserif = DM_Serif_Display({ subsets: ["latin"], weight: ["400"] });
 
 export default function PieceInfo({ data }) {
   const [open, setOpen] = useState(false);
