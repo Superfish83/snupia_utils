@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRef } from "react";
 
 import localFont from "next/font/local";
+import ScrollProgressBar from "@/components/concert/ScrollProgressBar";
 const fontDanjung = localFont({
   src: "./Cafe24Danjunghae-v2.0.woff2",
 });
@@ -53,6 +54,7 @@ export default function Home() {
 
   return (
     <>
+      <ScrollProgressBar />
       <div className={"h-screen " + fontDanjung.className}>
         <ConcertBanner chuksaRef={chuksaRef} />
       </div>

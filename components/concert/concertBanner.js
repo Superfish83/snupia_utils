@@ -34,7 +34,7 @@ export default function ConcertBanner({ chuksaRef }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.0, delay: 0.5 }}
         >
-          <div className="text-center text-lg mb-4 mt-16">
+          <div className="text-center text-lg mb-4 mt-20">
             <div>SNUPia 제33회 정기연주회 </div>
             <div className="text-xl">온라인 프로그램 북</div>
           </div>
@@ -48,7 +48,7 @@ export default function ConcertBanner({ chuksaRef }) {
             blurDataURL={blurredPoster}
           />
           <div className="absolute top-0 left-0 h-full w-full flex flex-col">
-            <div className="w-full h-4/5"></div>
+            <div className="w-full h-5/6"></div>
             {showBtn && (
               <motion.div
                 className="mx-auto"
