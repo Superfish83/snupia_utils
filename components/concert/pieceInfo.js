@@ -1,77 +1,92 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
+import { DM_Serif_Display } from "next/font/google";
+const fontDmserif = DM_Serif_Display({ weight: ["400"] });
+
 export default function PieceInfo({ data }) {
   const [open, setOpen] = useState(false);
 
   return (
     <AnimatePresence>
-      <motion.div className="w-full item-center my-1 text-lg p-2 border-b-2 border-slate-400">
+      <motion.div
+        className={
+          "item-center my-4 mx-2 text-lg p-4 border-l-2 border-gray-500 rounded-xl " +
+          (open && "bg-gray-950 transition-all")
+        }
+      >
         <section
-          className="flex items-center"
+          className={"flex items-center cursor-pointer "}
           onClick={() => {
             setOpen(!open);
           }}
         >
-          <div className="text-sm">
-            <div className="font-bold text-slate-200">{data.composer}</div>
-            <div className="font-bold text-base">{data.title}</div>
-            <div className="flex items-center">
-              <div className="">{data.performer_name} </div>
-              <div className="text-slate-200 ml-1">({data.performer_info})</div>
+          <div className={"text-base " + fontDmserif.className}>
+            <div className="text-xl ">{data.composer}</div>
+            <div className="">
+              {data.title.map((data, key) => (
+                <div key={key}>{data}</div>
+              ))}
+            </div>
+            <div className="">
+              {data.subtitle.map((data, key) => (
+                <div key={key}>{data}</div>
+              ))}
             </div>
           </div>
-          {data.desc1 && (
-            <div className="text-slate-500 ml-auto">{open ? "▲" : "▼"}</div>
-          )}
         </section>
 
-        {open && data.desc1 && (
+        {open && (
           <AnimatePresence mode="sync">
-            <div className="border-t-2 text-slate-200 border-slate-700 my-2 text-base pt-2">
+            <div className=" my-2 text-base pt-2">
               <motion.div
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-blue-100 font-bold text-center my-2"
+                className="text-blue-100 text-center my-2"
               >
-                연주자 인삿말
+                <div className="text-lg">연주자: {data.performer_name}</div>
+                <div className="text-base">({data.performer_info})</div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                {data.desc1.map((text, key) => (
-                  <div key={key} className="mb-2">
-                    {"⠀"}
-                    {text}
-                  </div>
-                ))}
-              </motion.div>
+              {data.desc1 && (
+                <>
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                  >
+                    {data.desc1.map((text, key) => (
+                      <div key={key} className="mb-2">
+                        {"⠀"}
+                        {text}
+                      </div>
+                    ))}
+                  </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-blue-100 font-bold mt-4 mb-2 text-center"
-              >
-                곡 소개
-              </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="text-blue-100 text-lg mt-4 mb-2 text-center"
+                  >
+                    곡 소개
+                  </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                {data.desc2.map((text, key) => (
-                  <div key={key} className="mb-2">
-                    {"⠀"}
-                    {text}
-                  </div>
-                ))}
-              </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  >
+                    {data.desc2.map((text, key) => (
+                      <div key={key} className="mb-2">
+                        {"⠀"}
+                        {text}
+                      </div>
+                    ))}
+                  </motion.div>
+                </>
+              )}
             </div>
           </AnimatePresence>
         )}

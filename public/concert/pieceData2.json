@@ -2,9 +2,10 @@
   {
     "order": 1,
     "composer": "Queen",
-    "title": "Bohemian Rhapsody",
+    "title": ["Bohemian Rhapsody (arr. 박원)"],
+    "subtitle": [],
     "performer_name": "박원",
-    "performer_info": "컴퓨터공학부 98",
+    "performer_info": "컴퓨터공학부 98 | SNUPia OB",
     "desc1": [
       "2006년 SNUPia 제1회 정기연주회 피날레로 무소륵스키-호로비츠 \"키예프의 대문\"을 연주했던 1기 98학번 박원입니다. OB 연주회는 거의 매년 참여했지만 19년이 지나 제33회 정기연주회 무대에 다시 설 수 있게 되다니! 초대해주셔서 감사합니다! SNUPia Forever ♩♪♬"
     ],
@@ -14,28 +15,17 @@
   },
   {
     "order": 2,
-    "composer": "F. Chopin",
-    "title": "Etude 25-6",
+    "composer": "Frédéric  Chopin",
+    "title": ["Étude, Op. 25 No. 6 in G-Sharp minor"],
+    "subtitle": [],
     "performer_name": "문지원",
-    "performer_info": "피아노과 12"
+    "performer_info": "피아노과 12 | SNUPia OB"
   },
   {
     "order": 3,
-    "composer": "J. Sibelius",
-    "title": "Cinq Morceaux I, V",
-    "performer_name": "이현서",
-    "performer_info": "음악학과 23",
-    "desc1": [
-      "안녕하세요! 시벨리우스의 소품집 ‘나무들’을 연주하게 된 이현서입니다. 피아노 전공생이라는 이름을 벗어난 지 약 2년만에 처음 오르는 독주 무대인지라, 그 어느 때보다 설레고 간질거리는 마음입니다. 그래서 오늘 저는 어느 누구보다 가장 자유롭고자 합니다. 짧은 시간이지만 여러분도 그 순간에 진심으로 함께해주신다면 좋겠습니다. 감사합니다!"
-    ],
-    "desc2": [
-      "핀란드를 대표하는 낭만주의 음악가인 시벨리우스는 북유럽의 정취를 조성음악에 담아냈던 작곡가였습니다. 그의 소품집인 <The Trees>는 모두 나무를 소재로 한 다섯 개의 곡으로 이루어진 작품으로, 듣고 있자면 빼곡하게 펼쳐진 북유럽의 삼림이 떠오릅니다. 그중에서도 오늘 들려드릴 제1곡 <마가목 꽃이 필 때>와 제5곡 <가문비나무>는 고요하게 피고 지는 꽃들, 그리고 쓸쓸하게 사무치는 바람을 표현한 듯한 애상적인 선율이 인상적인 곡입니다. 함께 이 정취를 느낄 수 있기를 바랍니다."
-    ]
-  },
-  {
-    "order": 4,
-    "composer": "A. Scriabin",
-    "title": "Piano Sonata No.2",
+    "composer": "Alexandre  Scriabin",
+    "title": ["Piano Sonata No. 2 in G-Sharp minor, Op. 19,"],
+    "subtitle": ["\"Sonata Fantasy\""],
     "performer_name": "최재열",
     "performer_info": "통계학과 23",
     "desc1": [
@@ -47,22 +37,38 @@
     ]
   },
   {
-    "order": 5,
-    "composer": "J. Haydn",
-    "title": "Piano Sonata No.50",
-    "performer_name": "김유선",
-    "performer_info": "수의예과 24",
+    "order": 4,
+    "composer": "Jean  Sibelius",
+    "title": ["5 Pieces for Piano, Op. 75 \"The Trees\""],
+    "subtitle": ["No. 1 \"When the Rowan Blossoms\"", "No. 5 \"The Spurce\""],
+    "performer_name": "이현서",
+    "performer_info": "음악학과 23",
     "desc1": [
-      "안녕하세요! 수의예과 24학번 김유선입니다. 아직 피아노 초보자인 저에게 하이든 소나타를 연주하는 것은 하나의 큰 도전이었습니다. 갖은 우여곡절이 있었지만, 이 과정이 주는 값진 경험을 여러분과 함께 나누고 싶습니다. 오늘 무대에 제 열정이 고스란히 담길 수 있도록 최선을 다하겠습니다. 감사합니다!"
+      "안녕하세요! 시벨리우스의 소품집 ‘나무들’을 연주하게 된 이현서입니다. 피아노 전공생이라는 이름을 벗어난 지 약 2년만에 처음 오르는 독주 무대인지라, 그 어느 때보다 설레고 간질거리는 마음입니다. 그래서 오늘 저는 어느 누구보다 가장 자유롭고자 합니다. 짧은 시간이지만 여러분도 그 순간에 진심으로 함께해주신다면 좋겠습니다. 감사합니다!"
     ],
     "desc2": [
-      "하이든 소나타 16-37 1악장은 소나타 형식을 따라 세 부분으로 나눌 수 있습니다. 명랑한 제시부는 빠르고 경쾌한 리듬으로 소나타의 시작을 알립니다. 발전부에서는 음악이 단조로 전환되어 긴장감이 고조되며 제시부와의 대비를 이룹니다. 재현부에서는 익숙한 멜로디에 예상 외의 움직임들이 더해져 끝까지 귀를 사로잡습니다.  변화와 대비의 반복을 통해 끊임없는 신선함을 선사하는 곡입니다. 활기찬 이 곡이 여러분께 작은 기쁨을 드릴 수 있길 바랍니다!"
+      "핀란드를 대표하는 낭만주의 음악가인 시벨리우스는 북유럽의 정취를 조성음악에 담아냈던 작곡가였습니다. 그의 소품집인 <The Trees>는 모두 나무를 소재로 한 다섯 개의 곡으로 이루어진 작품으로, 듣고 있자면 빼곡하게 펼쳐진 북유럽의 삼림이 떠오릅니다. 그중에서도 오늘 들려드릴 제1곡 <마가목 꽃이 필 때>와 제5곡 <가문비나무>는 고요하게 피고 지는 꽃들, 그리고 쓸쓸하게 사무치는 바람을 표현한 듯한 애상적인 선율이 인상적인 곡입니다. 함께 이 정취를 느낄 수 있기를 바랍니다."
+    ]
+  },
+  {
+    "order": 5,
+    "composer": "Frédéric  Chopin",
+    "title": ["Étude, Op. 25 No. 1 in A-Flat Major, No. 12 in C minor"],
+    "subtitle": [],
+    "performer_name": "김연준",
+    "performer_info": "컴퓨터공학부 24",
+    "desc1": [
+      "안녕하세요, 이번에 처음으로 정기연주회 무대에 오르게 된 컴퓨터공학부 24학번 김연준입니다. 이 자리에 찾아와 주셔서 감사하고, 애정하는 곡을 제 손으로 들려드릴 수 있게 되어 영광입니다. 좋은 연주로 오늘이 여러분의 기억에 남았으면 합니다."
+    ],
+    "desc2": [
+      "쇼팽의 에튀드 Op.25 중 제1곡과 제12곡은 둘 다 반복되는 아르페지오 음형을 통해 전개되는 곡입니다. 하지만 두 곡은 서로 대비되는 분위기를 지니고 있습니다. 제1곡 \"에올리언 하프\"에서 아르페지오는 다정하게 흐르는 선율을 달콤하게 감싸는 한편, 제12곡 \"대양\"에서는 바다의 격랑을 연상시키는 강렬한 인상을 만들어 냅니다. 이러한 두 가지 색채와 그 안에 녹아든 서정성으로부터 쇼팽 에튀드의 매력을 느낄 수 있는 곡들입니다."
     ]
   },
   {
     "order": 6,
-    "composer": "F. Chopin",
-    "title": "Ballade No.1",
+    "composer": "Frédéric  Chopin",
+    "title": ["Ballade No. 1 in G minor, Op. 23"],
+    "subtitle": [],
     "performer_name": "문도현",
     "performer_info": "약학과 석사과정",
     "desc1": [
@@ -74,8 +80,9 @@
   },
   {
     "order": 7,
-    "composer": "F. Liszt",
-    "title": "Hungarian Rhapsody No. 2",
+    "composer": "Franz  Liszt",
+    "title": ["Hungarian Rhapsody No. 2 in C-Sharp minor, S. 244/2"],
+    "subtitle": [],
     "performer_name": "조예나",
     "performer_info": "기계공학부 24",
     "desc1": [
