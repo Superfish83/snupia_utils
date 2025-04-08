@@ -20,7 +20,7 @@ export default function GuessTheMusic() {
       style={{ marginTop: "10vh" }}
     >
       <Image
-        src="/games/2.jpg"
+        src="/gameResources/games/2.jpg"
         alt="game2"
         width={1080}
         height={540}

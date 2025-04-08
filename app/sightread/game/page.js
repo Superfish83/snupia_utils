@@ -55,7 +55,7 @@ export default function Game() {
   const [lastAnswer, setLastAnswer] = useState(-1);
   const [lastCorrect, setLastCorrect] = useState(-1);
 
-  const images = useImages("quizpic");
+  const images = useImages("gameResources/quizpic");
 
   const DEBUGMODE = false;
 
@@ -97,7 +97,7 @@ export default function Game() {
     // Play key sound
     const tmp = getPitch(answer);
     const sound = new Audio(
-      `/piano-mp3/${
+      `/gameResources/piano-mp3/${
         (tmp[0] == "A" && tmp.length == 2) || tmp[0] == "B"
           ? getPitch(answer - 12)
           : tmp
@@ -136,7 +136,7 @@ export default function Game() {
   function getKeyFromQuizIdx() {
     //console.log(quizList[quizIdx.dif]);
     const t = quizList[quizIdx.dif][quizIdx.idx].slice(1);
-    return parseInt(t.slice(t.indexOf("/") + 3, [t.indexOf("_")]));
+    return parseInt(t.slice(t.indexOf("/") + 11, [t.indexOf("_")]));
   }
 
   const GameRunning = () => (

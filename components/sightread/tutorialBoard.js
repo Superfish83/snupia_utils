@@ -37,7 +37,7 @@ export default function TutorialBoard({ gamestart, right, wrong }) {
           href={"/sightread/game"}
           onClick={() => {
             // Play key sound
-            const sound = new Audio(`/piano-mp3/C4.mp3`);
+            const sound = new Audio(`/gameResources/piano-mp3/C4.mp3`);
             sound.play();
           }}
         />
