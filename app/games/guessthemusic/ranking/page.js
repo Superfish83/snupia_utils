@@ -13,9 +13,9 @@ export default function Ranking() {
   const genres = ["전체", "classic", "jazz", "korean", "metal"];
 
   useEffect(() => {
-    fetch('/api/getRanks')
-      .then(res => res.json())
-      .then(data => {
+    fetch("/api/getRanks")
+      .then((res) => res.json())
+      .then((data) => {
         if (Array.isArray(data)) {
           setRankings(data);
         } else {
@@ -24,29 +24,35 @@ export default function Ranking() {
           console.log("반환된 데이터 내용:", data);
         }
       })
-      .catch(err => console.error("랭킹 데이터를 불러오는 중 오류 발생:", err));
+      .catch((err) =>
+        console.error("랭킹 데이터를 불러오는 중 오류 발생:", err)
+      );
   }, []);
 
   const filteredRankings = rankings
-    .filter(rank => (difficulty === "전체" || rank.difficulty === difficulty))
-    .filter(rank => (genre === "전체" || rank.genre === genre))
-    .filter(rank => rank.name.includes(searchName))
-    .sort((a, b) => sortOrder === "desc" ? b.score - a.score : a.score - b.score);
+    .filter((rank) => difficulty === "전체" || rank.difficulty === difficulty)
+    .filter((rank) => genre === "전체" || rank.genre === genre)
+    .filter((rank) => rank.name.includes(searchName))
+    .sort((a, b) =>
+      sortOrder === "desc" ? b.score - a.score : a.score - b.score
+    );
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-start p-4">
-        <button
-          className="absolute top-4 left-4 bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded"
-          onClick={() => window.location.href = "/guessthemusic"}
-        >          ↩
-        </button>
+      <button
+        className="absolute top-4 left-4 bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded"
+        onClick={() => (window.location.href = "/games/guessthemusic")}
+      >
+        {" "}
+        ↩
+      </button>
       <h1 className="text-2xl font-bold mb-4">난이도별 랭킹</h1>
 
       <div className="flex flex-col items-center mb-4">
         <select
           className="systemInput mb-2 text-black"
           value={difficulty}
-          onChange={e => setDifficulty(e.target.value)}
+          onChange={(e) => setDifficulty(e.target.value)}
         >
           <option value="전체">전체 난이도</option>
           <option value="입문자">입문자</option>
@@ -60,7 +66,7 @@ export default function Ranking() {
         <select
           className="systemInput mb-2 text-black"
           value={genre}
-          onChange={e => setGenre(e.target.value)}
+          onChange={(e) => setGenre(e.target.value)}
         >
           <option value="전체">전체 장르</option>
           <option value="classic">classic</option>
@@ -72,7 +78,9 @@ export default function Ranking() {
 
         <button
           className="systemBtn mb-2"
-          onClick={() => setSortOrder(prev => prev === "desc" ? "asc" : "desc")}
+          onClick={() =>
+            setSortOrder((prev) => (prev === "desc" ? "asc" : "desc"))
+          }
         >
           정렬: {sortOrder === "desc" ? "내림차순" : "오름차순"}
         </button>
@@ -81,7 +89,7 @@ export default function Ranking() {
           className="systemInput mb-2 text-black"
           placeholder="이름 검색"
           value={searchName}
-          onChange={e => setSearchName(e.target.value)}
+          onChange={(e) => setSearchName(e.target.value)}
         />
       </div>
 

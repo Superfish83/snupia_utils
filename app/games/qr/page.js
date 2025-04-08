@@ -31,7 +31,7 @@ export default function Home() {
           <div className="mx-auto mt-4  text-xl font-bold">입부 신청 링크</div>
         </div>
       </section>
-      <Link href={"/"} className="systemBtn mx-auto mt-10">
+      <Link href={"/games"} className="systemBtn mx-auto mt-10">
         게임 시작 화면으로
       </Link>
     </div>

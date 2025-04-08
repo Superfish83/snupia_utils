@@ -31,7 +31,10 @@ export default function GuessTheMusic() {
       </div>
       <div className="text-5xl my-2">피아노 음악 퀴즈</div>
       <div className="flex flex-col">
-        <Link href="/guessthemusic/game" className="systemBtn w-64 text-center">
+        <Link
+          href="/games/guessthemusic/game"
+          className="systemBtn w-64 text-center"
+        >
           시작
         </Link>
         <button
@@ -43,14 +46,14 @@ export default function GuessTheMusic() {
           {isSettingsClicked ? "설정은 미구현입니다!" : "설정"}
         </button>
         <Link
-          href="/guessthemusic/ranking"
+          href="/games/guessthemusic/ranking"
           className="systemBtn w-64 text-center mt-1"
         >
           랭킹
         </Link>
       </div>
 
-      <Link href="/" className="systemBtn w-64 text-center mt-1">
+      <Link href="/games/" className="systemBtn w-64 text-center mt-1">
         게임 목록
       </Link>
 
