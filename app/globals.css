@@ -6,8 +6,15 @@ body {
   @apply bg-black text-white;
 }
 
-::-webkit-scrollbar {
+#hideScroll::-webkit-scrollbar {
   display: none;
+}
+
+::-webkit-scrollbar {
+  @apply bg-gray-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-500 rounded-lg;
 }
 
 .systemBtn {
