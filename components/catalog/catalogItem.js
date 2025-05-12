@@ -30,13 +30,14 @@ function TagComposer({ composer, setSearchText }) {
   );
 }
 
-function TagEra({ era, setSearchTag }) {
+function TagEra({ era, setSearchTag, setSearchText }) {
   return (
     <div
       onClick={(e) => {
         e.preventDefault(); // Prevent <Link> behavior
         e.stopPropagation(); // Prevent parent <Link> click
         setSearchTag(era);
+        setSearchText("");
       }}
       className={
         "my-0.5 mr-1 px-2 py-0.5 rounded-xl w-fit " +
@@ -93,7 +94,11 @@ export default function CatalogItem({ itemJson, setSearchText, setSearchTag }) {
             composer={itemJson.composer_kor}
             setSearchText={setSearchText}
           />
-          <TagEra era={itemJson.era} setSearchTag={setSearchTag} />
+          <TagEra
+            era={itemJson.era}
+            setSearchTag={setSearchTag}
+            setSearchText={setSearchText}
+          />
         </div>
         <div className="font-bold text-gray-700">
           보존 상태:{" "}
