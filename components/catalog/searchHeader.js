@@ -1,6 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const eras = [
   "바로크",
@@ -36,75 +35,13 @@ function SearchTagEra({ era, selected, onClick }) {
 }
 
 export default function SearchHeader({
-  loading,
+  isLoading,
   catalogVersion,
-  catalogData,
-  setDisplayData,
-  setDisplayText,
-  setIsLoading,
+  searchText,
+  setSearchText,
+  searchTag,
+  setSearchTag,
 }) {
-  const [searchText, setSearchText] = useState("");
-  const [searchTag, setSearchTag] = useState("");
-
-  function getMatch(target, keyword) {
-    let a = null;
-    let b = null;
-
-    const charsToRemove = " -*+?.,\\^$|#";
-    const regex = new RegExp(`[${charsToRemove}]`, "g");
-
-    const reduce = (str) =>
-      str
-        .toLowerCase()
-        .replace(regex, "")
-        .replace(/-/g, "")
-        .replace(/Ä/g, "ae")
-        .replace(/ä/g, "ae")
-        .replace(/Ö/g, "oe")
-        .replace(/ö/g, "oe")
-        .replace(/Ü/g, "ue")
-        .replace(/ü/g, "ue")
-        .replace(/ß/g, "ss")
-        .replace(/ç/g, "c")
-        .replace(/ñ/g, "n");
-
-    if (target) {
-      a = reduce(target);
-    }
-    if (keyword) {
-      b = reduce(keyword);
-    }
-    return a?.includes(b);
-  }
-
-  function doSearch() {
-    setIsLoading(true);
-
-    const doTagSearch = searchTag !== "";
-    const doTextSearch = searchText !== "";
-
-    const displayData = catalogData?.filter(
-      (item) =>
-        (!doTagSearch || item.era === searchTag) &&
-        (!doTextSearch ||
-          getMatch(item.title_kor, searchText) ||
-          getMatch(item.title_org, searchText) ||
-          getMatch(item.description, searchText) ||
-          getMatch(item.composer_kor, searchText) ||
-          getMatch(item.composer_org, searchText) ||
-          getMatch(item.performer_kor, searchText))
-    );
-    //console.log(displayData);
-    setDisplayData(displayData);
-    if (doTagSearch || doTextSearch)
-      setDisplayText(`검색 결과 (${displayData.length}건)`);
-    else setDisplayText("전체 자료 목록");
-    setIsLoading(false);
-  }
-  useEffect(() => {
-    doSearch();
-  }, [searchText, searchTag]);
-
   return (
     <header className="flex p-4 md:p-8 space-x-6 items-center min-h-36 bg-black">
       <Image
@@ -120,7 +57,7 @@ export default function SearchHeader({
           SNUPia 동아리방의 소장 자료 목록입니다.
         </div>
         <div className="text-sm text-gray-400">
-          Version: {!loading ? catalogVersion : "Loading..."}
+          Version: {!isLoading ? catalogVersion : "Loading..."}
         </div>
       </div>
 
@@ -131,6 +68,7 @@ export default function SearchHeader({
             type="text"
             className="w-full bg-transparent text-lg"
             placeholder="검색어를 입력하세요(2자 이상)"
+            value={searchText}
             onChange={(e) => {
               if (e.target.value.length >= 2) setSearchText(e.target.value);
               else setSearchText("");

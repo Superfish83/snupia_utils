@@ -1,13 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-import CatalogItem, { TagEra } from "@/components/catalog/catalogItem";
+import CatalogItem from "@/components/catalog/catalogItem";
 import CatalogFooter from "@/components/catalog/catalogFooter";
 import SearchHeader from "@/components/catalog/searchHeader";
+
+import { getMatch } from "@/functions/getMatch";
 
 export default function Catalog() {
   const [catalogData, setCatalogData] = useState(null);
   const [catalogVersion, setCatalogVersion] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [searchText, setSearchText] = useState("");
+  const [searchTag, setSearchTag] = useState("");
 
   const [displayData, setDisplayData] = useState(null);
   const [displayText, setDisplayText] = useState("전체 자료 목록");
@@ -24,15 +29,44 @@ export default function Catalog() {
     fetchCatalogData();
   }, [isLoading]);
 
+  useEffect(() => {
+    function doSearch() {
+      setIsLoading(true);
+
+      const doTagSearch = searchTag !== "";
+      const doTextSearch = searchText !== "";
+
+      const displayData = catalogData?.filter(
+        (item) =>
+          (!doTagSearch || item.era === searchTag) &&
+          (!doTextSearch ||
+            getMatch(item.title_kor, searchText) ||
+            getMatch(item.title_org, searchText) ||
+            getMatch(item.description, searchText) ||
+            getMatch(item.composer_kor, searchText) ||
+            getMatch(item.composer_org, searchText) ||
+            getMatch(item.performer_kor, searchText))
+      );
+      //console.log(displayData);
+      setDisplayData(displayData);
+      if (doTagSearch || doTextSearch)
+        setDisplayText(`검색 결과 (${displayData.length}건)`);
+      else setDisplayText("전체 자료 목록");
+      setIsLoading(false);
+    }
+    doSearch();
+  }, [searchText, searchTag]);
+
   return (
     <>
       <SearchHeader
-        loading={isLoading}
+        isLoading={isLoading}
         catalogVersion={catalogVersion}
         catalogData={catalogData}
-        setDisplayData={setDisplayData}
-        setDisplayText={setDisplayText}
-        setIsLoading={setIsLoading}
+        searchText={searchText}
+        setSearchText={setSearchText}
+        searchTag={searchTag}
+        setSearchTag={setSearchTag}
       />
       <article className="p-4 md:p-8 text-black ">
         <div className="text-xl mb-4">{displayText}</div>
@@ -41,7 +75,12 @@ export default function Catalog() {
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {displayData.map((item, index) =>
                 item.id && item.id !== 0 ? (
-                  <CatalogItem key={index} itemJson={item} />
+                  <CatalogItem
+                    key={index}
+                    itemJson={item}
+                    setSearchText={setSearchText}
+                    setSearchTag={setSearchTag}
+                  />
                 ) : null
               )}
             </section>

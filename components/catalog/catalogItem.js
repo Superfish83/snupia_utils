@@ -14,9 +14,14 @@ const tagCss = {
   "분류 없음": "bg-gray-800 hover:bg-gray-700",
 };
 
-function TagComposer({ composer }) {
+function TagComposer({ composer, setSearchText }) {
   return (
     <div
+      onClick={(e) => {
+        e.preventDefault(); // Prevent <Link> behavior
+        e.stopPropagation(); // Prevent parent <Link> click
+        setSearchText(composer);
+      }}
       className="my-0.5 mr-1 bg-gray-800 hover:bg-gray-700 text-white cursor-pointer transition-all
        px-2 py-0.5 rounded-xl w-fit"
     >
@@ -25,9 +30,14 @@ function TagComposer({ composer }) {
   );
 }
 
-function TagEra({ era }) {
+function TagEra({ era, setSearchTag }) {
   return (
     <div
+      onClick={(e) => {
+        e.preventDefault(); // Prevent <Link> behavior
+        e.stopPropagation(); // Prevent parent <Link> click
+        setSearchTag(era);
+      }}
       className={
         "my-0.5 mr-1 px-2 py-0.5 rounded-xl w-fit " +
         "transition-all cursor-pointer text-white " +
@@ -63,7 +73,7 @@ function ItemMaybeImage({ imageUrl, webImageUrl }) {
   );
 }
 
-export default function CatalogItem({ itemJson }) {
+export default function CatalogItem({ itemJson, setSearchText, setSearchTag }) {
   return (
     <Link
       href={`/catalog/${itemJson.id}`}
@@ -79,8 +89,11 @@ export default function CatalogItem({ itemJson }) {
           {itemJson.publisher}
         </div>
         <div className="text-sm flex flex-wrap align-center ">
-          <TagComposer composer={itemJson.composer_kor} />
-          <TagEra era={itemJson.era} />
+          <TagComposer
+            composer={itemJson.composer_kor}
+            setSearchText={setSearchText}
+          />
+          <TagEra era={itemJson.era} setSearchTag={setSearchTag} />
         </div>
         <div className="font-bold text-gray-700">
           보존 상태:{" "}
