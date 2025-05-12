@@ -54,7 +54,7 @@ export default function Catalog() {
       else setDisplayText("전체 자료 목록");
       setIsLoading(false);
     }
-    doSearch();
+    if (searchText.length != 1) doSearch();
   }, [searchText, searchTag]);
 
   return (

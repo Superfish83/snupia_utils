@@ -43,39 +43,40 @@ export default function SearchHeader({
   setSearchTag,
 }) {
   return (
-    <header className="flex p-4 md:p-8 space-x-6 items-center min-h-36 bg-black">
-      <Image
-        src="/logo.png"
-        alt="SNUPia Logo"
-        width={100}
-        height={100}
-        className="w-24 rounded-3xl"
-      />
-      <div className="space-y-0.5">
-        <div className="text-xl md:text-3xl font-bold">SNUPia Catalog</div>
-        <div className="text-sm md:text-xl">
-          SNUPia 동아리방의 소장 자료 목록입니다.
+    <header className="max-lg:p-8 max-lg:space-y-4 lg:flex lg:p-8 items-center min-h-36 bg-black">
+      <section className="flex items-center space-x-6">
+        <Image
+          src="/logo.png"
+          alt="SNUPia Logo"
+          width={100}
+          height={100}
+          className="w-24 rounded-3xl"
+        />
+        <div className="space-y-0.5">
+          <div className="text-xl md:text-3xl font-bold">SNUPia Catalog</div>
+          <div className="text-sm md:text-xl">
+            SNUPia 동아리방의 소장 자료 목록입니다.
+          </div>
+          <div className="text-sm text-gray-400">
+            Version: {!isLoading ? catalogVersion : "Loading..."}
+          </div>
         </div>
-        <div className="text-sm text-gray-400">
-          Version: {!isLoading ? catalogVersion : "Loading..."}
-        </div>
-      </div>
+      </section>
 
-      <section className="space-y-2 px-4">
+      <section className="space-y-2 lg:ml-auto">
         <div className="w-full h-fit bg-gray-700 rounded-full px-4 py-2 gap-2 flex items-center">
           <MagnifyingGlassIcon className="w-6 h-6" />
           <input
             type="text"
-            className="w-full bg-transparent text-lg"
+            className="w-full bg-transparent"
             placeholder="검색어를 입력하세요(2자 이상)"
             value={searchText}
             onChange={(e) => {
-              if (e.target.value.length >= 2) setSearchText(e.target.value);
-              else setSearchText("");
+              setSearchText(e.target.value);
             }}
           />
         </div>
-        <div className="flex gap-1">
+        <div className="flex flex-wrap gap-1 max-sm:justify-center">
           {eras.map((era, index) => (
             <SearchTagEra
               key={index}

@@ -21,7 +21,7 @@ function MaybeImage({ imageUrl, webImageUrl }) {
   return (
     <div
       className={
-        "flex w-2/5 h-96 items-center justify-center rounded-lg text-gray-600 border-2 " +
+        "flex md:w-2/5 h-96 items-center justify-center rounded-lg text-gray-600 border-2 " +
         (!valid && " bg-white")
       }
     >
@@ -78,12 +78,15 @@ export default function CatalogId({ params }) {
         </Link>
       </header>
 
-      <section className="p-4 md:p-12 ">
+      <section className="p-4 md:p-12 mb-8">
         <div className="text-xl mb-4">자료 정보 조회</div>
         {itemJson ? (
-          <section className="flex space-x-6 rounded-xl w-full min-h-96 text-black text-lg">
+          <section
+            className="md:flex max-md:space-y-6 md:space-x-6 \
+                      rounded-xl w-full min-h-96 text-black text-lg"
+          >
             <MaybeImage imageUrl={itemJson.img} webImageUrl={itemJson.webimg} />
-            <div className="flex flex-col w-2/3 h-full justify-center space-y-3">
+            <div className="flex flex-col md:w-2/3 h-full justify-center space-y-3">
               <div className="space-y-1">
                 <div className="text-2xl font-bold">{itemJson.title_kor}</div>
                 <div className=" text-gray-700">{itemJson.description}</div>
