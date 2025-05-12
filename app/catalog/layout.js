@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <section
-      className={`${fontNanumMyeongjo.className} antialiased`}
+      className={`${fontNanumMyeongjo.className} antialiased bg-white`}
       id="catalog"
     >
       {children}
