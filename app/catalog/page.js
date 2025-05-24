@@ -66,7 +66,7 @@ export default function Catalog() {
     if (topRef.current) {
       topRef.current.scrollIntoView();
     }
-  }, [searchText]);
+  }, [searchText, searchTag]);
 
   return (
     <>
