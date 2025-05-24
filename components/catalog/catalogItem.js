@@ -7,9 +7,9 @@ const tagCss = {
   고전: "bg-orange-700 hover:bg-orange-600",
   낭만: "bg-amber-600 hover:bg-amber-500",
   인상주의: "bg-blue-800 hover:bg-blue-700",
-  현대: "bg-violet-800 hover:bg-violet-700",
-  동시대: "bg-purple-800 hover:bg-purple-700",
-  "팝/가요": "bg-green-800 hover:bg-green-700",
+  근대: "bg-violet-800 hover:bg-violet-700",
+  현대: "bg-purple-800 hover:bg-purple-700",
+  "팝/뉴에이지": "bg-green-800 hover:bg-green-700",
   재즈: "bg-cyan-800 hover:bg-cyan-700",
   "분류 없음": "bg-gray-800 hover:bg-gray-700",
 };
@@ -49,10 +49,27 @@ function TagEra({ era, setSearchTag, setSearchText }) {
     </div>
   );
 }
+
+function TagInstruction({ setSearchText }) {
+  return (
+    <div
+      onClick={(e) => {
+        e.preventDefault(); // Prevent <Link> behavior
+        e.stopPropagation(); // Prevent parent <Link> click
+      }}
+      className={
+        "my-0.5 mr-1 px-2 py-0.5 rounded-xl w-fit bg-yellow-800 " +
+        "transition-all cursor-pointer text-white "
+      }
+    >
+      {"피아노 교본"}
+    </div>
+  );
+}
 function ItemMaybeImage({ imageUrl, webImageUrl }) {
   const url =
     imageUrl && imageUrl.length > 0
-      ? imageUrl
+      ? `/catalogpic/${imageUrl}`
       : webImageUrl && webImageUrl.length > 0
       ? webImageUrl
       : null;
@@ -75,6 +92,11 @@ function ItemMaybeImage({ imageUrl, webImageUrl }) {
 }
 
 export default function CatalogItem({ itemJson, setSearchText, setSearchTag }) {
+  const reducedDesc = itemJson.description
+    ? itemJson.description.length > 100
+      ? itemJson.description.substring(0, 50) + "..."
+      : itemJson.description
+    : "";
   return (
     <Link
       href={`/catalog/${itemJson.id}`}
@@ -85,9 +107,9 @@ export default function CatalogItem({ itemJson, setSearchText, setSearchTag }) {
       <ItemMaybeImage imageUrl={itemJson.img} webImageUrl={itemJson.webimg} />
       <div className="flex flex-col w-2/3 h-full justify-center space-y-1 text-black">
         <div className="text-xl font-bold">{itemJson.title_kor}</div>
-        <div className="text-sm text-gray-700">{itemJson.description}</div>
+        <div className="text-sm text-gray-700">{reducedDesc}</div>
         <div className="text-sm text-gray-700 font-bold">
-          {itemJson.publisher}
+          {`출판사: ${itemJson.publisher}`}
         </div>
         <div className="text-sm flex flex-wrap align-center ">
           <TagComposer
@@ -99,6 +121,7 @@ export default function CatalogItem({ itemJson, setSearchText, setSearchTag }) {
             setSearchTag={setSearchTag}
             setSearchText={setSearchText}
           />
+          {itemJson.isInstr && <TagInstruction />}
         </div>
         <div className="font-bold text-gray-700">
           보존 상태:{" "}

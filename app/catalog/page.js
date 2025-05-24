@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CatalogItem from "@/components/catalog/catalogItem";
 import CatalogFooter from "@/components/catalog/catalogFooter";
 import SearchHeader from "@/components/catalog/searchHeader";
 
-import { getMatch } from "@/functions/getMatch";
+import { getInstr, getMatch } from "@/functions/getMatch";
 
 export default function Catalog() {
   const [catalogData, setCatalogData] = useState(null);
@@ -36,17 +36,21 @@ export default function Catalog() {
       const doTagSearch = searchTag !== "";
       const doTextSearch = searchText !== "";
 
-      const displayData = catalogData?.filter(
-        (item) =>
-          (!doTagSearch || item.era === searchTag) &&
-          (!doTextSearch ||
-            getMatch(item.title_kor, searchText) ||
-            getMatch(item.title_org, searchText) ||
-            getMatch(item.description, searchText) ||
-            getMatch(item.composer_kor, searchText) ||
-            getMatch(item.composer_org, searchText) ||
-            getMatch(item.performer_kor, searchText))
-      );
+      const displayData = catalogData?.filter((item) => {
+        const tagFilter = !doTagSearch || item.era === searchTag;
+
+        const textFilter =
+          !doTextSearch ||
+          getMatch(item.title_kor, searchText) ||
+          getMatch(item.title_org, searchText) ||
+          getMatch(item.description, searchText) ||
+          getMatch(item.composer_kor, searchText) ||
+          getMatch(item.composer_org, searchText) ||
+          getMatch(item.performer_kor, searchText) ||
+          getMatch(item.publisher, searchText) ||
+          (item.isInstr == "Y" && getInstr(searchText));
+        return tagFilter && textFilter;
+      });
       //console.log(displayData);
       setDisplayData(displayData);
       if (doTagSearch || doTextSearch)
@@ -57,8 +61,16 @@ export default function Catalog() {
     if (searchText.length != 1) doSearch();
   }, [searchText, searchTag]);
 
+  const topRef = useRef(null);
+  useEffect(() => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView();
+    }
+  }, [searchText]);
+
   return (
     <>
+      <div ref={topRef} />
       <SearchHeader
         isLoading={isLoading}
         catalogVersion={catalogVersion}

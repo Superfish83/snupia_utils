@@ -2,7 +2,6 @@ import path from "path";
 import fs from "fs";
 import * as XLSX from "xlsx";
 import { NextResponse } from "next/server";
-import { version } from "os";
 
 function getCatalogData() {
   const filePath = path.join(process.cwd(), "app/api/catalog/catalog.xlsx");
@@ -32,11 +31,19 @@ function getCatalogData() {
     }
   }
 
+  resData.sort((a, b) => {
+    // Sort by era first, then by title
+    if (a.era_eng[0] < b.era_eng[0]) return -1;
+    if (a.era_eng[0] > b.era_eng[0]) return 1;
+    return 0;
+  });
+
   let catalog = {
     version: resVersion,
     data: resData,
     label: resLabel,
   };
+
   return catalog;
 }
 

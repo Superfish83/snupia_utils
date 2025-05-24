@@ -1,14 +1,15 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const eras = [
   "바로크",
   "고전",
   "낭만",
   "인상주의",
+  "근대",
   "현대",
-  "동시대",
-  "팝/가요",
+  "팝/뉴에이지",
   "재즈",
 ];
 const selectedTagCss = {
@@ -16,9 +17,9 @@ const selectedTagCss = {
   고전: "border-orange-700 hover:border-orange-600",
   낭만: "border-amber-600 hover:border-amber-500",
   인상주의: "border-blue-800 hover:border-blue-700",
-  현대: "border-violet-800 hover:border-violet-700",
-  동시대: "border-purple-800 hover:border-purple-700",
-  "팝/가요": "border-green-800 hover:border-green-700",
+  근대: "border-violet-800 hover:border-violet-700",
+  현대: "border-purple-800 hover:border-purple-700",
+  "팝/뉴에이지": "border-green-800 hover:border-green-700",
   재즈: "border-cyan-800 hover:border-cyan-700",
   "분류 없음": "border-gray-800 hover:border-gray-700",
 };
@@ -44,7 +45,7 @@ export default function SearchHeader({
 }) {
   return (
     <header className="max-lg:p-8 max-lg:space-y-4 lg:flex lg:p-8 items-center min-h-36 bg-black">
-      <section className="flex items-center space-x-6">
+      <section className="flex items-center space-x-6 ">
         <Image
           src="/logo.png"
           alt="SNUPia Logo"
@@ -73,6 +74,12 @@ export default function SearchHeader({
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
+            }}
+          />
+          <XMarkIcon
+            className="w-6 h-6 cursor-pointer text-gray-300 hover:text-gray-200  bg-gray-500 rounded-full"
+            onClick={() => {
+              setSearchText("");
             }}
           />
         </div>

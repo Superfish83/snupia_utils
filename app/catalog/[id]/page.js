@@ -5,14 +5,13 @@ import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { TagComposer, TagEra } from "@/components/catalog/catalogItem";
 import { DocumentIcon } from "@heroicons/react/24/outline";
 import CatalogFooter from "@/components/catalog/catalogFooter";
 
 function MaybeImage({ imageUrl, webImageUrl }) {
   const url =
     imageUrl && imageUrl.length > 0
-      ? imageUrl
+      ? `/catalogpic/${imageUrl}`
       : webImageUrl && webImageUrl.length > 0
       ? webImageUrl
       : null;
@@ -89,11 +88,8 @@ export default function CatalogId({ params }) {
             <div className="flex flex-col md:w-2/3 h-full justify-center space-y-3">
               <div className="space-y-1">
                 <div className="text-2xl font-bold">{itemJson.title_kor}</div>
-                <div className=" text-gray-700">{itemJson.description}</div>
                 {itemJson.title_org && (
-                  <div className="text-gray-700">
-                    {`(원제: ${itemJson.title_org})`}
-                  </div>
+                  <div>{`(원제: ${itemJson.title_org})`}</div>
                 )}
               </div>
 
@@ -126,16 +122,16 @@ export default function CatalogId({ params }) {
 
               <div className="w-full h-0.5 rounded-full my-10 bg-gray-500" />
 
-              <div className="space-y-1">
+              <div className="space-y-2">
+                <div className="">{itemJson.description}</div>
                 <div>
-                  <div className="font-bold">수록 작품 목록</div>
-                  <div className="text-base text-gray-700 border-2 rounded-xl p-1">
-                    {itemJson.opus ? itemJson.opus : "정보 없음"}
+                  <div className="text-base text-gray-700">
+                    {itemJson.opus ? itemJson.opus : ""}
                   </div>
                 </div>
                 <div>
                   <div className="font-bold">비고</div>
-                  <div className="text-base text-gray-700 border-2 rounded-xl p-1">
+                  <div className="text-base text-gray-700">
                     {itemJson.desc2 ? itemJson.desc2 : "정보 없음"}
                   </div>
                 </div>
