@@ -14,6 +14,10 @@ export default function Catalog() {
   const [searchText, setSearchText] = useState("");
   const [searchTag, setSearchTag] = useState("");
 
+  const [resultData, setResultData] = useState(null);
+
+  const displayUnit = 12;
+  const [displayCnt, setDisplayCnt] = useState(0);
   const [displayData, setDisplayData] = useState(null);
   const [displayText, setDisplayText] = useState("전체 자료 목록");
 
@@ -22,7 +26,8 @@ export default function Catalog() {
       const res = await fetch("/api/catalog");
       const data = await res.json();
       setCatalogData(data.data);
-      setDisplayData(data.data);
+      setResultData(data.data);
+      setDisplayCnt(displayUnit);
       setCatalogVersion(data.version);
       setIsLoading(false);
     }
@@ -36,7 +41,7 @@ export default function Catalog() {
       const doTagSearch = searchTag !== "";
       const doTextSearch = searchText !== "";
 
-      const displayData = catalogData?.filter((item) => {
+      const result = catalogData?.filter((item) => {
         const tagFilter = !doTagSearch || item.era === searchTag;
 
         const textFilter =
@@ -54,21 +59,32 @@ export default function Catalog() {
         return tagFilter && textFilter;
       });
       //console.log(displayData);
-      setDisplayData(displayData);
+      setResultData(result);
       if (doTagSearch || doTextSearch)
-        setDisplayText(`검색 결과 (${displayData.length}건)`);
+        setDisplayText(`검색 결과 (${result.length}건)`);
       else setDisplayText("전체 자료 목록");
       setIsLoading(false);
+
+      const cnt = Math.min(displayUnit, result?.length);
+      setDisplayData(result?.slice(0, cnt));
+      setDisplayCnt(cnt);
     }
     if (searchText.length != 1) doSearch();
   }, [searchText, searchTag]);
+
+  useEffect(() => {
+    if (resultData) {
+      const cnt = Math.min(displayCnt, resultData.length);
+      setDisplayData(resultData.slice(0, cnt));
+    }
+  }, [displayCnt]);
 
   const topRef = useRef(null);
   useEffect(() => {
     if (topRef.current) {
       topRef.current.scrollIntoView();
     }
-  }, [searchText, searchTag]);
+  }, [resultData]);
 
   return (
     <>
@@ -104,6 +120,20 @@ export default function Catalog() {
         ) : (
           <div className="my-40 text-center">Loading...</div>
         )}
+        <section className="flex justify-center mt-8">
+          {resultData?.length > displayCnt && (
+            <button
+              className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-all"
+              onClick={() => {
+                if (displayCnt < resultData?.length) {
+                  setDisplayCnt(displayCnt + displayUnit);
+                }
+              }}
+            >
+              더 보기 (+{resultData?.length - displayCnt}건)
+            </button>
+          )}
+        </section>
       </article>
       <CatalogFooter />
     </>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { DocumentIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const tagCss = {
   바로크: "bg-red-800 hover:bg-red-700",
@@ -56,6 +57,7 @@ function TagInstruction({ setSearchText }) {
       onClick={(e) => {
         e.preventDefault(); // Prevent <Link> behavior
         e.stopPropagation(); // Prevent parent <Link> click
+        setSearchText("피아노 교본");
       }}
       className={
         "my-0.5 mr-1 px-2 py-0.5 rounded-xl w-fit bg-yellow-800 " +
@@ -98,47 +100,53 @@ export default function CatalogItem({ itemJson, setSearchText, setSearchTag }) {
       : itemJson.description
     : "";
   return (
-    <Link
-      href={`/catalog/${itemJson.id}`}
-      className="flex p-4 space-x-4 border-2 
+    <motion.div
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex p-4 border-2 
         border-gray-800 hover:bg-gray-100 transition-all
          rounded-xl w-full min-h-52"
     >
-      <ItemMaybeImage imageUrl={itemJson.img} webImageUrl={itemJson.webimg} />
-      <div className="flex flex-col w-2/3 h-full justify-center space-y-1 text-black">
-        <div className="text-xl font-bold">{itemJson.title_kor}</div>
-        <div className="text-sm text-gray-700">{reducedDesc}</div>
-        <div className="text-sm text-gray-700 font-bold">
-          {`출판사: ${itemJson.publisher}`}
+      <Link href={`/catalog/${itemJson.id}`} className="flex space-x-4 ">
+        <ItemMaybeImage imageUrl={itemJson.img} webImageUrl={itemJson.webimg} />
+        <div className="flex flex-col w-2/3 h-full justify-center space-y-1 text-black">
+          <div className="text-xl font-bold">{itemJson.title_kor}</div>
+          <div className="text-sm text-gray-700">{reducedDesc}</div>
+          <div className="text-sm text-gray-700 font-bold">
+            {`출판사: ${itemJson.publisher}`}
+          </div>
+          <div className="text-sm flex flex-wrap align-center ">
+            <TagComposer
+              composer={itemJson.composer_kor}
+              setSearchText={setSearchText}
+            />
+            <TagEra
+              era={itemJson.era}
+              setSearchTag={setSearchTag}
+              setSearchText={setSearchText}
+            />
+            {itemJson.isInstr && (
+              <TagInstruction setSearchText={setSearchText} />
+            )}
+          </div>
+          <div className="font-bold text-gray-700">
+            {itemJson.doner?.length > 0 ? (
+              <div className="font-bold text-gray-700">
+                기증자: {itemJson.doner}
+              </div>
+            ) : null}
+            보존 상태:{" "}
+            {itemJson.condition == 3 ? (
+              <span className="text-green-600">좋음</span>
+            ) : itemJson.condition == 2 ? (
+              <span className="text-yellow-600">보통</span>
+            ) : itemJson.condition == 1 ? (
+              <span className="text-red-600">나쁨</span>
+            ) : null}
+          </div>
         </div>
-        <div className="text-sm flex flex-wrap align-center ">
-          <TagComposer
-            composer={itemJson.composer_kor}
-            setSearchText={setSearchText}
-          />
-          <TagEra
-            era={itemJson.era}
-            setSearchTag={setSearchTag}
-            setSearchText={setSearchText}
-          />
-          {itemJson.isInstr && <TagInstruction />}
-        </div>
-        <div className="font-bold text-gray-700">
-          {itemJson.doner?.length > 0 ? (
-            <div className="font-bold text-gray-700">
-              기증자: {itemJson.doner}
-            </div>
-          ) : null}
-          보존 상태:{" "}
-          {itemJson.condition == 3 ? (
-            <span className="text-green-600">좋음</span>
-          ) : itemJson.condition == 2 ? (
-            <span className="text-yellow-600">보통</span>
-          ) : itemJson.condition == 1 ? (
-            <span className="text-red-600">나쁨</span>
-          ) : null}
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 }

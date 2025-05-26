@@ -1,5 +1,6 @@
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const eras = [
   "바로크",
@@ -42,9 +43,26 @@ export default function SearchHeader({
   searchTag,
   setSearchTag,
 }) {
+  const [barContent, setBarContent] = useState("");
+  useEffect(() => {
+    setBarContent(searchText);
+  }, [searchText]);
+
+  function handleSearch() {
+    if (barContent.length <= 1) {
+      alert("검색어는 2글자 이상 입력해주세요.");
+      return;
+    } else setSearchText(barContent.trim());
+  }
   return (
     <header className="max-lg:p-8 max-lg:space-y-4 lg:flex lg:p-8 items-center min-h-36 bg-black">
-      <section className="flex items-center space-x-6 ">
+      <button
+        className="flex items-center space-x-6 text-left"
+        onClick={() => {
+          setSearchText("");
+          setSearchTag("");
+        }}
+      >
         <Image
           src="/logo.png"
           alt="SNUPia Logo"
@@ -55,32 +73,41 @@ export default function SearchHeader({
         <div className="space-y-0.5">
           <div className="text-xl md:text-3xl font-bold">SNUPia Catalog</div>
           <div className="text-sm md:text-xl">
-            SNUPia 동아리방의 소장 자료 목록입니다.
+            SNUPia 동아리방의 소장 악보 목록입니다.
           </div>
           <div className="text-sm text-gray-400">
             Version: {!isLoading ? catalogVersion : "Loading..."}
           </div>
         </div>
-      </section>
+      </button>
 
       <section className="space-y-2 lg:ml-auto">
         <div className="w-full h-fit bg-gray-700 rounded-full px-4 py-2 gap-2 flex items-center">
-          <MagnifyingGlassIcon className="w-6 h-6" />
           <input
             type="text"
             className="w-full bg-transparent"
-            placeholder="검색어를 입력하세요(2자 이상)"
-            value={searchText}
+            placeholder="검색어를 입력하세요(ex: 리스트, 소나타, ...)"
+            value={barContent}
             onChange={(e) => {
-              setSearchText(e.target.value);
+              setBarContent(e.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+                e.currentTarget.blur();
+              }
             }}
           />
           <XMarkIcon
             className="w-6 h-6 cursor-pointer text-gray-300 hover:text-gray-200  bg-gray-500 rounded-full"
             onClick={() => {
+              setBarContent("");
               setSearchText("");
             }}
-          />
+          />{" "}
+          <button onClick={handleSearch}>
+            <MagnifyingGlassIcon className="w-6 h-6" />
+          </button>
         </div>
         <div className="flex flex-wrap gap-1 max-sm:justify-center">
           {eras.map((era, index) => (
