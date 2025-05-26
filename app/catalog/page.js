@@ -55,6 +55,7 @@ export default function Catalog() {
           getMatch(item.transcription, searchText) ||
           getMatch(item.publisher, searchText) ||
           getMatch(item.doner, searchText) ||
+          getMatch(item.era, searchText) ||
           (item.isInstr == "Y" && getInstr(searchText));
         return tagFilter && textFilter;
       });
