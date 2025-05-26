@@ -47,7 +47,9 @@ export default function Catalog() {
           getMatch(item.composer_kor, searchText) ||
           getMatch(item.composer_org, searchText) ||
           getMatch(item.performer_kor, searchText) ||
+          getMatch(item.transcription, searchText) ||
           getMatch(item.publisher, searchText) ||
+          getMatch(item.doner, searchText) ||
           (item.isInstr == "Y" && getInstr(searchText));
         return tagFilter && textFilter;
       });

@@ -139,11 +139,11 @@ export default function CatalogId({ params }) {
 
               <div className="w-full h-0.5 rounded-full my-10 bg-gray-500" />
 
-              <div className="space-y-1">
+              <div className="space-y-1 font-bold">
                 <div className="">
                   기증자: {itemJson.doner ? itemJson.doner : "정보 없음"}
                 </div>
-                <div className="font-bold">
+                <div className="">
                   보존 상태:{" "}
                   {itemJson.condition == 3 ? (
                     <span className="text-green-600">좋음</span>

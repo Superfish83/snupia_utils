@@ -124,6 +124,11 @@ export default function CatalogItem({ itemJson, setSearchText, setSearchTag }) {
           {itemJson.isInstr && <TagInstruction />}
         </div>
         <div className="font-bold text-gray-700">
+          {itemJson.doner?.length > 0 ? (
+            <div className="font-bold text-gray-700">
+              기증자: {itemJson.doner}
+            </div>
+          ) : null}
           보존 상태:{" "}
           {itemJson.condition == 3 ? (
             <span className="text-green-600">좋음</span>
