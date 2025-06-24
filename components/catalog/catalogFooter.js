@@ -15,8 +15,8 @@ export default function CatalogFooter() {
           를 이용해 보세요.
         </div>
         <div>
-          잘못 표기된 정보 및 누락된 정보 제보, 자료 기증 문의는 집행진에게 알려
-          주세요!
+          잘못 표기되거나 누락된 정보 제보, 자료 기증 문의 등은 집행진에게 연락
+          부탁드립니다!
         </div>
         <div className="text-gray-400">
           서울대학교 중앙 피아노 동아리 SNUPia{" "}
