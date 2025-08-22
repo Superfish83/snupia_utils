@@ -1,12 +1,12 @@
 "use client";
 
-import ConcertBanner from "@/components/concert/concertBanner";
-import PieceInfo from "@/components/concert/pieceInfo";
+import ConcertBanner from "@/components/concert/33/concertBanner";
+import PieceInfo from "@/components/concert/33/pieceInfo";
 import Image from "next/image";
 import { useRef } from "react";
 
 import localFont from "next/font/local";
-import ScrollProgressBar from "@/components/concert/ScrollProgressBar";
+import ScrollProgressBar from "@/components/concert/33/ScrollProgressBar";
 import Link from "next/link";
 const fontDanjung = localFont({
   src: "./Cafe24Danjunghae-v2.0.woff2",
@@ -16,9 +16,9 @@ const fontPnight = localFont({
 });
 
 export default function Home() {
-  const piecedata1 = require("@/public/concert/pieceData1.json");
-  const piecedata2 = require("@/public/concert/pieceData2.json");
-  const chuksa = require("@/public/concert/celebration.json");
+  const piecedata1 = require("./pieceData1.json");
+  const piecedata2 = require("./pieceData2.json");
+  const chuksa = require("./celebration.json");
 
   const chuksaRef = useRef();
 
@@ -33,13 +33,6 @@ export default function Home() {
       >
         축사
       </section>
-      <Image
-        src={"/concert/jiwonmoon2.jpg"}
-        alt="jiwonmoon"
-        width={370}
-        height={370}
-        className="w-40 h-40 rounded-full mx-auto mt-6 mb-2"
-      />
       <div className={"px-6 mb-14 text-base " + fontPnight.className}>
         {chuksa[0].text.map((data, key) => (
           <div key={key} className="my-4">
