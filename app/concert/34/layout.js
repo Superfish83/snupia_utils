@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "9.12 SNUPia 제 34회 정기연주회",
+  title: "SNUPia 제 34회 정기연주회",
   description: "SNUPia 제 34회 정기연주회의 사전 홍보 페이지입니다.",
 };
 

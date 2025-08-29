@@ -19,16 +19,35 @@ export default function ScrollProgressBar() {
   }, []);
 
   return (
-    <div
-      className="h-3 bg-gradient-to-r from-amber-400 to-amber-500 border-b-4 border-[#a47764] rounded-full "
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: `${scrollPercentage}%`,
-        zIndex: 50,
-        transition: "width 0.1s ease-out",
-      }}
-    />
+    <div>
+      <div
+        className="h-1 w-full bg-gradient-to-r from-green-600 to-amber-500"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 40,
+        }}
+      />
+      <div
+        className="h-1 w-full bg-gradient-to-r from-green-600 to-amber-500 rounded-full"
+        style={{
+          position: "fixed",
+          top: 3,
+          left: 0,
+          zIndex: 40,
+        }}
+      />
+      <div
+        className="h-2 bg-gradient-to-r bg-[#8d6f61]"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: `${scrollPercentage}%`,
+          width: `${100 - scrollPercentage}%`,
+          zIndex: 50,
+        }}
+      />
+    </div>
   );
 }
