@@ -6,7 +6,7 @@
     },
     "piece": [
       {
-        "title": "Ballade No.3 in A flat Major, Op.47",
+        "title": "Ballade No. 3 in A flat Major, Op. 47",
         "movement": "",
         "composer": "F. Chopin"
       }
@@ -29,7 +29,7 @@
     },
     "piece": [
       {
-        "title": "Mephisto Waltz No.1 S.514",
+        "title": "Mephisto Waltz No. 1 S. 514",
         "movement": "",
         "composer": "F. Liszt"
       }
@@ -49,7 +49,7 @@
     },
     "piece": [
       {
-        "title": "Annes de perelinage, 2nd Year \"Italie\", S.161",
+        "title": "Annes de perelinage, 2nd Year \"Italie\", S. 161",
         "movement": "V. Sonetto 104 del Petraca",
         "composer": "F. Liszt"
       }
@@ -71,7 +71,7 @@
     },
     "piece": [
       {
-        "title": "Erlkönig (after F. Schubert), S.558/4",
+        "title": "Erlkönig (after F. Schubert), S. 558/4",
         "movement": "",
         "composer": "F. Liszt"
       }
@@ -88,7 +88,7 @@
     },
     "piece": [
       {
-        "title": "Le Tombeau de Couperin, M.68",
+        "title": "Le Tombeau de Couperin, M. 68",
         "movement": "1. Prelude",
         "composer": "M. Ravel"
       }
@@ -109,9 +109,9 @@
     },
     "piece": [
       {
-        "title": "The Lark (after M. Glinka)",
+        "title": "A Farewell to St. Petersburg No. 10 “Zhavoronok(The lark)",
         "movement": "",
-        "composer": "M. Balakirev"
+        "composer": "M. Glinka / M. Balakirev"
       }
     ],
     "intro_performer": [
@@ -129,8 +129,8 @@
     },
     "piece": [
       {
-        "title": "8 Concert Etudes Op.40",
-        "movement": "No. 6, \"Pastorale\"",
+        "title": "Concert Etude No. 6, \"Pastorale\"",
+        "movement": "",
         "composer": "N. Kapustin"
       }
     ],
@@ -148,7 +148,7 @@
     },
     "piece": [
       {
-        "title": "Etude Op.27 \"Le Chemin de Fer\"",
+        "title": "Etude Op. 27 \"Le Chemin de Fer\"",
         "movement": "",
         "composer": "C. V. Alkan"
       }

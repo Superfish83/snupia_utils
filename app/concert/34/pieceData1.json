@@ -6,7 +6,7 @@
     },
     "piece": [
       {
-        "title": "Piano Sonata in A Minor, K.310",
+        "title": "Piano Sonata in a Minor, K. 310",
         "movement": "II. Andante cantabile, III. Presto",
         "composer": "W. A. Mozart"
       }
@@ -48,7 +48,7 @@
     },
     "piece": [
       {
-        "title": "Piano Sonata No. 6 in F Major, Op.10-2",
+        "title": "Piano Sonata No. 6 in F Major, Op. 10-2",
         "movement": "I. Allegro, II. Allegratto, III. Presto",
         "composer": "L. V. Beethoven"
       }
@@ -72,12 +72,12 @@
     },
     "piece": [
       {
-        "title": "Piano Sonata No.8 in c minor, Op.13",
+        "title": "Piano Sonata No. 8 in c minor, Op. 13",
         "movement": "II. Adagio cantabile",
         "composer": "L. V. Beethoven"
       },
       {
-        "title": "Prelude No.15 in D-flat Major, Op.28",
+        "title": "Prelude No. 15 in D-flat Major, Op. 28",
         "movement": "",
         "composer": "F. Chopin"
       }
@@ -99,7 +99,7 @@
     },
     "piece": [
       {
-        "title": "Polonaise in A-flat Major, Op.53 \"Heroic\"",
+        "title": "Polonaise in A-flat Major, Op. 53 \"Heroic\"",
         "movement": "",
         "composer": "F. Chopin"
       }
@@ -121,7 +121,7 @@
     },
     "piece": [
       {
-        "title": "Barcarolle in F sharp Major, Op.60",
+        "title": "Barcarolle in F sharp Major, Op. 60",
         "movement": "",
         "composer": "F. Chopin"
       }
