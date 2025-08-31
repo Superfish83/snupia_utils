@@ -6,59 +6,68 @@ import Image from "next/image"
 const Q = [
   {
     id: 1,
-    text: "1",
-    imgsrc: "/gameResources/mbti/test.png",
+    text: "음악을 들을 때 나는...",
+    imgsrc: "/gameResources/mbti/1.jpg",
     options: [
-      { value: "E", text: "1" },
-      { value: "I", text: "2" },
+      { value: "T", text: "화려하고 신나는 음악이 좋아!" },
+      { value: "F", text: "잔잔하고 부드러운 음악이 최고지!" },
     ],
   },
   {
     id: 2,
-    text: "2",
-    imgsrc: "/gameResources/mbti/test.png",
+    text: "친구가 새로운 음악을 추천해줬다! 그때 나는...",
+    imgsrc: "/gameResources/mbti/2.jpg",
     options: [
-      { value: "S", text: "1" },
-      { value: "N", text: "2" },
+      { value: "E", text: "바로 들어봐야지! 좋으면 플리에도 추가할거야" },
+      { value: "I", text: "난 듣는거만 들어~" },
     ],
   },
   {
     id: 3,
-    text: "3",
-    imgsrc: "/gameResources/mbti/test.png",
+    text: "딱 하나만 고른다면 나는?",
+    imgsrc: "/gameResources/mbti/3.webp",
     options: [
-      { value: "T", text: "1" },
-      { value: "F", text: "2" },
+      { value: "J", text: "최신 가요가 제일 좋지" },
+      { value: "P", text: "옛날 대중음악중에 명곡이 얼마나 많은데" },
+      { value: "X", text: "클래식." },
     ],
   },
   {
     id: 4,
-    text: "4",
-    imgsrc: "/gameResources/mbti/test.png",
+    text: "내가 음악을 고를때는...",
+    imgsrc: "/gameResources/mbti/4.avif",
     options: [
-      { value: "J", text: "1" },
-      { value: "P", text: "2" },
+      { value: "N", text: "장르나 분위기, 완성도 같은 음악적인 취향대로 고르는편" },
+      { value: "S", text: "그냥 듣기만 좋으면 되는거지 뭘~" },
     ],
   },
 ]
 
 const mbtiTypes = {
-  INTJ: ["INTJ", "설명"],
-  INTP: ["INTP", "설명"],
-  ENTJ: ["ENTJ", "설명"],
-  ENTP: ["ENTP", "설명"],
-  INFJ: ["INFJ", "설명"],
-  INFP: ["INFP", "설명"],
-  ENFJ: ["ENFJ", "설명"],
-  ENFP: ["ENFP", "설명"],
-  ISTJ: ["ISTJ", "설명"],
-  ISFJ: ["ISFJ", "설명"],
-  ESTJ: ["ESTJ", "설명"],
-  ESFJ: ["ESFJ", "설명"],
-  ISTP: ["ISTP", "설명"],
-  ISFP: ["ISFP", "설명"],
-  ESTP: ["ESTP", "설명"],
-  ESFP: ["ESFP", "설명"],
+  ENTJ: ["리스트", "설명", "liszt.jpg"],
+  ENTP: ["바흐", "설명", "bach.jpg"],
+  ENFJ: ["슈만", "설명", "schumann.png"],
+  ENFP: ["리스트", "설명", "liszt.jpg"],
+  ESTJ: ["모차르트", "설명", "mozart.jpg"],
+  ESTP: ["비발디", "설명", "vivaldi.jpg"],
+  ESFJ: ["드뷔시", "설명", "debussy.jpg"],
+  ESFP: ["멘델스존", "설명", "mendelssohn.jpg"],
+  INTJ: ["브람스", "설명", "brahms.jpg"],
+  INTP: ["베토벤", "설명", "beethoven.jpg"],
+  INFJ: ["차이코프스키", "설명", "tchaikovsky.jpg"],
+  INFP: ["슈베르트", "설명", "schubert.jpg"],
+  ISTJ: ["라흐마니노프", "설명", "rach.jpg"],
+  ISTP: ["쇼스타코비치", "설명", "shostakovich.webp"],
+  ISFJ: ["쇼팽", "설명", "chopin.jpg"],
+  ISFP: ["쇼팽", "설명", "chopin.jpg"],
+  ENTX: ["스트라빈스키", "설명", "stravinsky.jpg"],
+  ENFX: ["쇤베르크", "설명", "schoenberg.jpg"],
+  ESTX: ["바그너", "설명", "wagner.jpg"],
+  ESFX: ["스크랴빈", "설명", "scriabin.jpg"],
+  INTX: ["프로코피예프", "설명", "prokofiev.jpg"],
+  INFX: ["말러", "설명", "mahler.jpg"],
+  ISTX: ["라벨", "설명", "ravel.png"],
+  ISFX: ["메트너", "설명", "medtner.webp"],
 }
 
 export default function MBTISurvey() {
@@ -72,20 +81,23 @@ export default function MBTISurvey() {
   }
 
   const calc = () => {
-    const d = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
+    const d = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0, X: 0 }
 
     Object.values(ans).forEach((answer) => {
-      d[answer]++
+      d[answer]++;
+      console.log(d);
+      console.log(d.X);
     })
 
     const type =
       (d.E > d.I ? "E" : "I") +
       (d.S > d.N ? "S" : "N") +
       (d.T > d.F ? "T" : "F") +
-      (d.J > d.P ? "J" : "P")
+      (d.X == 0 ? (d.J > d.P ? "J" : "P") : "X")
 
     setResult(type)
     setShowResult(true)
+    console.log(type);
   }
 
   const next = () => {
@@ -121,7 +133,7 @@ export default function MBTISurvey() {
           </div>
           <div className="flex items-center text-center flex-col gap-6">
             <Image
-            src={"/gameResources/mbti/test.png"}
+            src={`/gameResources/mbti/${mbtiTypes[mbtiResult][2]}`}
             alt={`${"test"}`}
             width={300}
             height={200}
