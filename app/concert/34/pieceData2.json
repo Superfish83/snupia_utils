@@ -6,7 +6,7 @@
     },
     "piece": [
       {
-        "title": "Ballade No. 3 in A flat Major, Op. 47",
+        "title": "Ballade No. 3 in A-flat Major, Op. 47",
         "movement": "",
         "composer": "F. Chopin"
       }
@@ -29,7 +29,7 @@
     },
     "piece": [
       {
-        "title": "Mephisto Waltz No. 1 S. 514",
+        "title": "Mephisto Waltz No. 1, S. 514",
         "movement": "",
         "composer": "F. Liszt"
       }
@@ -71,12 +71,14 @@
     },
     "piece": [
       {
-        "title": "Erlkönig (after F. Schubert), S. 558/4",
+        "title": "\"Erlkönig\", S. 558/4",
         "movement": "",
-        "composer": "F. Liszt"
+        "composer": "F. Schubert / F. Liszt"
       }
     ],
-    "intro_performer": [""],
+    "intro_performer": [
+      "안녕하세요, 수리과학부 김건호입니다. 제가 좋아하는 음악을 나눌 수 있는 기회를 주셔서 자리를 준비해 주신 운영진 분들과 이 자리에 함께 해주신 관객 여러분께 감사드립니다. 이번에 연주할 슈베르트의 마왕은 제가 깊이 공감하고 매우 아름답다고 생각하는 곡입니다. 마음을 열고 이 곡을 함께 감상해서 좋은 경험하시기를 바랍니다."
+    ],
     "intro_piece": [
       "괴테의 발라드 시 마왕을 바탕으로 한 슈베르트의 가곡은 유절형이 아닌 through-composed(통절형, durchkomponiert) 형식으로, 시의 전개에 따라 매 구절마다 새로운 음악이 전개됩니다. 내레이터, 아버지, 아이, 마왕 네 인물이 각기 다른 음역과 화성으로 구분되며, 왼손의 빠른 셋잇단음표는 말발굽의 질주를 묘사합니다. 리스트의 피아노 편곡 S.558/4는 이러한 극적인 요소를 건반에 옮겨와, 옥타브 진행과 아르페지오, 급격한 다이내믹 전환을 통해 통절형의 흐름을 더욱 뚜렷하게 드러냅니다."
     ]
@@ -89,12 +91,12 @@
     "piece": [
       {
         "title": "Le Tombeau de Couperin, M. 68",
-        "movement": "1. Prelude",
+        "movement": "I. Prelude",
         "composer": "M. Ravel"
       }
     ],
     "intro_performer": [
-      "안녕하세요. 올해 1학기까지 SNUPia에서 비전공생 멘토부장으로 활동했던 철학과 24학번 동희재입니다. 라벨 탄생 150주년인 올해, 오랫동안 애정했던 라벨의 곡을 여러분께 들려드릴 생각에 무척이나 설레는데요. 다음달부터 국방의 의무를 수행하는 관계로 학교를 잠시 떠나게 되는 저에게 있어 이번 연주회는 더욱 소중한 경험으로 기억될 것 같습니다. 오늘 연주회에 찾아주신 모든 분들께 진심으로 감사드리며, 저도 떠나기 전 마지막으로 미련 없이 연주할 수 있도록 최선을 다하겠습니다"
+      "안녕하세요. 올해 1학기까지 SNUPia에서 비전공생 멘토부장으로 활동했던 철학과 24학번 동희재입니다. 라벨 탄생 150주년인 올해, 오랫동안 애정했던 라벨의 곡을 여러분께 들려드릴 생각에 무척이나 설레는데요. 다음달부터 국방의 의무를 수행하는 관계로 학교를 잠시 떠나게 되는 저에게 있어 이번 연주회는 더욱 소중한 경험으로 기억될 것 같습니다. 오늘 연주회에 찾아주신 모든 분들께 진심으로 감사드리며, 저도 떠나기 전 마지막으로 미련 없이 연주할 수 있도록 최선을 다하겠습니다."
     ],
     "intro_piece": [
       "\"쿠프랭의 무덤\"은 총 6곡으로 구성된 모음곡으로, 제목에 18세기 프랑스 음악가인 쿠프랭이 언급되지만 쿠프랭 개인보다는 프랑스 바로크 음악 전반에 경의를 표하는 작품입니다. 각각의 곡은 쿠프랭이 활동했던 바로크 시대 악곡의 형식을 갖는다는 점에서 라벨의 신고전주의적 성향을 보여줍니다.",
@@ -109,7 +111,7 @@
     },
     "piece": [
       {
-        "title": "A Farewell to St. Petersburg No. 10 “Zhavoronok(The lark)",
+        "title": "\"The Lark\"",
         "movement": "",
         "composer": "M. Glinka / M. Balakirev"
       }
@@ -129,7 +131,7 @@
     },
     "piece": [
       {
-        "title": "Concert Etude No. 6, \"Pastorale\"",
+        "title": "Concert Etude Op. 40 No. 6, \"Pastorale\"",
         "movement": "",
         "composer": "N. Kapustin"
       }
@@ -168,7 +170,7 @@
     },
     "piece": [
       {
-        "title": "Prelude, Choral et Fugue, FWV. 21",
+        "title": "Prelude, Choral et Fugue, FWV21",
         "movement": "II. Choral, III. Fugue",
         "composer": "C. Franck"
       }

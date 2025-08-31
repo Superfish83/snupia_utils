@@ -21,7 +21,7 @@ export default function ScrollProgressBar() {
   return (
     <div>
       <div
-        className="h-1 w-full bg-gradient-to-r from-green-600 to-amber-500"
+        className="h-1 w-full bg-gradient-to-r from-green-700 to-amber-700"
         style={{
           position: "fixed",
           top: 0,
@@ -30,7 +30,7 @@ export default function ScrollProgressBar() {
         }}
       />
       <div
-        className="h-1 w-full bg-gradient-to-r from-green-600 to-amber-500 rounded-full"
+        className="h-1 w-full bg-gradient-to-r from-green-700 to-amber-700 rounded-full"
         style={{
           position: "fixed",
           top: 3,
@@ -39,7 +39,7 @@ export default function ScrollProgressBar() {
         }}
       />
       <div
-        className="h-2 bg-gradient-to-r bg-[#8d6f61]"
+        className="h-2 bg-[#8d6f61]"
         style={{
           position: "fixed",
           top: 0,
