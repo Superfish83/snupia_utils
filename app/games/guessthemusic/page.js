@@ -19,13 +19,6 @@ export default function GuessTheMusic() {
       className="w-full h-full flex flex-col items-center justify-center"
       style={{ marginTop: "10vh" }}
     >
-      <Image
-        src="/gameResources/games/2.jpg"
-        alt="game2"
-        width={1080}
-        height={540}
-        className="w-80 rounded-xl mb-3"
-      />
       <div className="mt-2" style={{ fontSize: "clamp(1rem, 5vw, 6rem)" }}>
         서울대학교 중앙 피아노 동아리 SNUPia
       </div>
@@ -57,9 +50,6 @@ export default function GuessTheMusic() {
         게임 목록
       </Link>
 
-      <div className="mx-auto mt-5 text-slate-400">
-        웹게임 제작: SNUPia 정보부 김민재
-      </div>
       <style jsx>{`
         @keyframes shake {
           0% {

@@ -555,8 +555,8 @@ export default function GuessTheMusicPage() {
                 key={i}
                 src={
                   i < lives
-                    ? "/guessing/heart.png"
-                    : "/guessing/heart_empty.png"
+                    ? "/gameResources/guessing/heart.png"
+                    : "/gameResources/guessing/heart_empty.png"
                 }
                 alt="Heart"
                 width={48}

@@ -232,7 +232,7 @@ export default function Game() {
         <div className="font-bold text-3xl text-green-200">
           맞힌 개수: {correctCnt}개
         </div>
-        <Link className="ml-10 systemBtn" href={"/game"}>
+        <Link className="ml-10 systemBtn" href={"/games"}>
           게임 종료
         </Link>
       </section>

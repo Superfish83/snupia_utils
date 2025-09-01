@@ -21,6 +21,11 @@ const nextConfig = {
         hostname: "www.henle.de",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.youtube.com",
+        pathname: "/**",
+      },
     ],
   },
 };
