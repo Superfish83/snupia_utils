@@ -29,7 +29,7 @@
       {
         "title": "Piano Sonata No.5 in c minor, Op. 10-1",
         "movement": "I. Allegro molto e con brio",
-        "composer": "L. V. Beethoven"
+        "composer": "L. v. Beethoven"
       }
     ],
     "intro_performer": [
@@ -49,8 +49,8 @@
     "piece": [
       {
         "title": "Piano Sonata No. 6 in F Major, Op. 10-2",
-        "movement": "I. Allegro, II. Allegratto, III. Presto",
-        "composer": "L. V. Beethoven"
+        "movement": "I. Allegro, II. Allegretto, III. Presto",
+        "composer": "L. v. Beethoven"
       }
     ],
     "intro_performer": [
@@ -74,7 +74,7 @@
       {
         "title": "Piano Sonata No. 8 in c minor, Op. 13 \"Pathétique\"",
         "movement": "II. Adagio cantabile",
-        "composer": "L. V. Beethoven"
+        "composer": "L. v. Beethoven"
       },
       {
         "title": "Prelude Op. 28 No. 15 in D-flat Major",
