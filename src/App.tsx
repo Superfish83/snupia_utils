@@ -2,8 +2,9 @@ import React, {Compoent} from 'react'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
 // import pages
-import About from './pages/About.tsx'
-import NotFound from './pages/NotFound.tsx'
+import NotFound from './pages/_NotFound.tsx'
+import Test from './pages/_Test.tsx'
+
 
 // main App component (routing 담당)
 export default function App() {
