@@ -13,5 +13,5 @@ createRoot(document.getElementById('root')!).render(
 /* 이 페이지의 scrollHeight를 상위 페이지인 snupia.kr의 페이지 스크립트에 전달해 iframe의 올바른 높이 설정을 가능하게 함*/
 window.addEventListener('load', function() {
   let message = {height: document.body.scrollHeight};	
-  window.top.postMessage(message, "*");
+  window.top?.postMessage(message, "*");
 });

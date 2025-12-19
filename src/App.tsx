@@ -1,4 +1,3 @@
-import React, {Compoent} from 'react'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
 // import pages
@@ -14,7 +13,6 @@ import WebGames from './pages/WebGames.tsx'
 // main App component (routing 담당)
 export default function App() {
   return (
-    <div classname="App">
     <BrowserRouter>
       <Routes>
         <Route path="/"         element={<Test />} />
@@ -28,6 +26,5 @@ export default function App() {
         {/* 추가 예정 */}
       </Routes>
     </BrowserRouter>
-    </div>
   )
 }
