@@ -11,7 +11,7 @@ export default function About() {
     <div className="alertbox">
       <IoIosAlert />
       <p>
-        <b>공지:</b> 학생회관 리모델링 공사로 인해 2026년 3월 말까지 기존 동아리방 출입이 제한됩니다.
+        <b>[공지]</b> 학생회관 리모델링 공사로 인해 2026년 3월 말까지 기존 동아리방 출입이 제한됩니다.
         대체 활동 공간 및 시간은 카카오톡 공지를 참조해 주세요.
       </p>
     </div>
@@ -49,7 +49,7 @@ export default function About() {
       <GongsaAlert />
 
       <div className="linkbox">
-      <a className="linkbutton" href="https://snupia.kr/utils/clubroom" target="_blank" rel="noopener noreferrer">
+      <a className="linkbutton" href="https://snupia.kr/utils/clubroom?" target="_blank" rel="noopener noreferrer">
       <GiMusicalScore /> 동아리방 및 소장 자료 안내</a>
       </div>
 
@@ -59,7 +59,6 @@ export default function About() {
 
       <br/>
       <h2><GiMusicalScore /> 멘토링 활동</h2>
-      
       <p>
         SNUPia는 <b>전공생 멘토링</b> 및 <b>비전공생 멘토링</b>을 운영하고 있습니다.
         우선 전공생멘토링은 소정의 신청비 납부 후 피아노과, 혹은 예술중학교나 예술고등학교에서 피아노를 전공한 회원에게
@@ -74,7 +73,6 @@ export default function About() {
 
       <br/>
       <h2><GiMusicalScore /> 친목 활동</h2>
-
       <p>
         SNUPia는 <b>MT, 개강/종강파티</b> 및 학기 중 여러 차례 <b>정기모임</b>을 열어 회원들 간의
         친목을 도모하고 있습니다. 정기모임에서는 피아노와 음악에 관련된 활동뿐만 아니라 버들골 점심 모임,
@@ -98,12 +96,11 @@ export default function About() {
 
       <br/>
       <h2><GiMusicalScore /> 대외 교류 활동</h2>
-
       <p>
         SNUPia는 타 대학 피아노동아리와의 대외 교류에도 집중하고 있습니다. <b>하양까망(숭실대), 건드림(서강대),
-        선율(건국대), PIY(연세대), TTP(고려대), 음취헌(성균관대), 인하인의피아노사랑(인하대)</b>
-        등과 교류하며 각종 앙상블, 교류연주회, 연합연주회 등을 개최하고 있습니다.
-        더불어, 서울대학교 아마추어 오케스트라 <b>SNUPO</b>와는 방학마다 앙상블 연주회를 개최하는 등
+        선율(건국대), PIY(연세대), TTP(고려대), 음취헌(성균관대), 인하인의피아노사랑(인하대)</b> 등과
+        교류하며 각종 앙상블, 교류연주회, 연합연주회 등을 개최하고 있습니다.
+        더불어, <b>서울대학교 아마추어 오케스트라 SNUPO</b>와는 방학마다 앙상블 연주회를 개최하는 등
         각종 협력사업을 다방면으로 진행하고 있습니다.
       </p>
 
@@ -124,7 +121,6 @@ export default function About() {
 
       <br/>
       <h2><GiMusicalScore /> 가입 안내</h2>
-
       <p>
         SNUPia는 실력보다 열정을 중시합니다. 현재 가지고 있는 실력에 걱정하지 마시고, 적극적으로 가입 신청해 주세요!
         신입 회원 모집은 정규학기 개강 직후(3월, 9월)에 진행합니다.

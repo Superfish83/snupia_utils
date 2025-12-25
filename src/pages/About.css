@@ -40,6 +40,8 @@ b {
     color: darkred;
 }
 
+
+
 .linkbox{
     display: flex;
     flex-direction: row;
@@ -65,6 +67,8 @@ b {
 .linkbutton:hover {
     background-color: slateblue;
 }
+
+
 
 .imgbox {
     display: flex;
