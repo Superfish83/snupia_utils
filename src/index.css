@@ -1,2 +1,5 @@
-/* 임시로 빈 파일로 놔둠 */
-/* Tailwind CSS + 폰트 여기에 작성할 예정 */
+@import url('//fonts.googleapis.com/earlyaccess/nanummyeongjo.css');
+
+body {
+    font-family: 'Nanum Myeongjo', serif;
+}
