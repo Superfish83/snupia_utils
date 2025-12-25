@@ -37,6 +37,14 @@ export async function getCatalogList(): Promise<Array<Object>> {
             doner: row[13],
         };
     });
+    
+    // ret.sort((a, b) : number => {
+    //     // Sort by era first, then by title
+    //     if (a.era_eng[0] < b.era_eng[0]) return -1;
+    //     if (a.era_eng[0] > b.era_eng[0]) return 1;
+    //     return 0;
+    // });
+
 
     return ret;
 }
