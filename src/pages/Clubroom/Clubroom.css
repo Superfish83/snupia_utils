@@ -1,7 +1,23 @@
+ol {
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+}
+ol li {
+    list-style-type: decimal;
+    margin-left: 20px;
+}
+ol li b {
+    font-weight: 800;
+    color: black;
+}
+
+
 .imgbox {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -9,9 +25,8 @@
 .imgbox img {
     width: auto;
     height: 280px;
-    display: block;
+    display: flex;
 }
-
 .imgcaption {
     text-align: center;
     font-size: 0.9em;

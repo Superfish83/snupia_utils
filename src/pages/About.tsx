@@ -1,3 +1,4 @@
+import './common.css'
 import './About.css'
 
 // import icons
@@ -12,7 +13,8 @@ export default function About() {
       <IoIosAlert />
       <p>
         <b>[공지]</b> 학생회관 리모델링 공사로 인해 2026년 3월 말까지 기존 동아리방 출입이 제한됩니다.
-        대체 활동 공간 및 시간은 카카오톡 공지를 참조해 주세요.
+        공사 기간동안 피아노는 <b>서울대학교 67동(NH두레문예관) 105호(다향만당)</b>에서 이용하실 수 있습니다.
+        사용 가능한 시간 및 예약 방법은 카카오톡 공지를 참조해 주세요.
       </p>
     </div>
   );
@@ -49,7 +51,7 @@ export default function About() {
       <GongsaAlert />
 
       <div className="linkbox">
-      <a className="linkbutton" href="https://snupia.kr/utils/clubroom?" target="_blank" rel="noopener noreferrer">
+      <a className="linkbutton" href="https://snupia.kr/react-pages/clubroom" target="_blank" rel="noopener noreferrer">
       <GiMusicalScore /> 동아리방 및 소장 자료 안내</a>
       </div>
 

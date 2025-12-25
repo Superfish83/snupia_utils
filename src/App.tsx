@@ -5,7 +5,7 @@ import NotFound from './pages/_NotFound.tsx'
 import Test from './pages/_Test.tsx'
 
 import About from './pages/About.tsx'
-import Clubroom from './pages/Clubroom.tsx'
+import Clubroom from './pages/Clubroom/Clubroom.tsx'
 import Posters from './pages/Posters.tsx'
 import WebGames from './pages/WebGames.tsx'
 
