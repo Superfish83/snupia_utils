@@ -15,3 +15,7 @@ window.addEventListener('resize', function() {
   let message = {height: document.body.scrollHeight};	
   window.top?.postMessage(message, "*");
 });
+window.addEventListener('load', function() {
+  let message = {height: document.body.scrollHeight};	
+  window.top?.postMessage(message, "*");
+});

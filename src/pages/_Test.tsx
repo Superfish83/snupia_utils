@@ -17,7 +17,7 @@ export default function Test() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>New SNUPia utils</h1>
+      <h1>SNUPia React Pages</h1>
       <h2>(Test page)</h2>
       <h2>Powered by Vite + React + TypeScript</h2>
       <TestComponent />
