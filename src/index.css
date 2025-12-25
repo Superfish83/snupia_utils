@@ -1,5 +1,13 @@
 @import url('//fonts.googleapis.com/earlyaccess/nanummyeongjo.css');
 
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  text-align: center;
+}
+
 body {
     font-family: 'Nanum Myeongjo', serif;
 }
